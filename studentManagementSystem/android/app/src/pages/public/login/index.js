@@ -84,7 +84,7 @@ const style = StyleSheet.create({
     padding:15,
     borderRadius:50,
     alignItems:'center',
-    backgroundColor: '#409eff',
+    backgroundColor: '#61b0d4',
   }
 });
 
