@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'react-native-axios'
 
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View, Text, ScrollView} from "react-native";
 
 import mock from'../mock/mock'
 
@@ -11,12 +11,18 @@ const Settings = () => {
   const createViews = (num,func) => {
     let arr = []
     for(let index = 1;index<=num;index++)
-      arr.push(<Text style={style.information}>{index}</Text>)
+      arr.push(<Text style={style.information} onPress={switchWeeks}>{index}</Text>)
     func(arr)
   }
 
-  const switchWeeks = () => {
+  const switchWeeks = (e) => {
+    let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
+    console.log()
+  }
 
+  const switchTerms = (e) => {
+    let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
+    console.log()
   }
 
   useEffect(() => {
@@ -29,13 +35,17 @@ const Settings = () => {
           <View style={style.title} key={0}>
             <Text>更换学期</Text>
           </View>
-          { mock.map((term, index) => (<View style={style.terms} key={++index}><Text style={style.information}>{term.term}</Text></View>))}
+          <ScrollView horizontal={true} style={style.termsScroll}>
+            { mock.map((term, index) => (<View style={style.terms} key={++index}><Text onPress={switchTerms} style={style.information}>{term.term}</Text></View>))}
+          </ScrollView>
         </View>
-        <View style={style.weeksList}>
+        <View style={style.weeksList} >
           <View style={style.title} key={0}>
             <Text>更换周数</Text>
           </View>
-          { weeksList.map((item, index) => ( <View style={style.weeks} key={index}>{item}</View> )) }
+          <ScrollView horizontal={true} style={style.weeksScroll}>
+            { weeksList.map((item, index) => ( <View style={style.weeks} key={index}>{item}</View> )) }
+          </ScrollView>
         </View>
     </View>  
   );
@@ -45,7 +55,8 @@ const style = StyleSheet.create({
   switchList:{
     minHeight:100,
     justifyContent:'space-around',
-    backgroundColor:'#ffffff'
+    backgroundColor:'#ffffff',
+    flex:1
   },
   termsList:{
     flexDirection:'row',
@@ -53,7 +64,6 @@ const style = StyleSheet.create({
     borderBottomWidth:1,
     borderColor:'#dddddd',
     justifyContent:'space-around',
-    width:360
   },
   terms:{
     height:30,
@@ -61,7 +71,8 @@ const style = StyleSheet.create({
     borderRadius:10,
     justifyContent:'center',
     alignItems:'center',
-    padding:5
+    padding:5,
+    marginLeft:10
   },
   weeksList:{
     flexDirection:'row',
@@ -69,7 +80,6 @@ const style = StyleSheet.create({
     borderBottomWidth:1,
     borderColor:'#dddddd',
     justifyContent:'space-around',
-    minWidth:800
   },
   weeks:{
     width:30,
@@ -78,6 +88,7 @@ const style = StyleSheet.create({
     borderRadius:50,
     justifyContent:'center',
     alignItems:'center',
+    marginLeft:10
   },
   information:{
     color:'#ffffff'

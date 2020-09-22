@@ -8,8 +8,8 @@ import mock from'../mock/mock'
 const ShowCourse = () => {
 
   const courseStyle = (index,section) => {
-    let colors = ['#c3a6d7','#a9e8e4','#90dcaa','#e8e8b1'],
-      color = colors[ Math.floor(Math.random() * 3) ],
+    let colors = ['#c3a6d7','#fe87b4','#16ad90','#539ce1'],
+      color = colors[ Math.floor(Math.random() * colors.length) ],
       top = index * 47,
       height = section * 46
     return {

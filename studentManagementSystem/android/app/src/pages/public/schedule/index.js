@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'react-native-axios'
 
-import { StyleSheet, View, TouchableOpacity, Text, Image, ScrollView } from "react-native";
+import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated } from "react-native";
 
 import Setting from './components/setting'
 import ShowCourse from './components/showCourse'
 import {SafeAreaView} from 'react-navigation'
 
-// import ModalDropdown from 'react-native-modal-dropdown';
-
 const Schedule = () => {
-  const [ifShowSetting,setIfShowSetting] = useState(style.hideSettings)
   const [row] = [12];
   const [rowList,setRowList] = useState([]);
-  
+  const [settingPosition,setSettingPosition] = useState(-100);
+  const [ifShowSetting] = useState(new Animated.Value(settingPosition));
+
   const createViews = (num,func) => {
     let arr = []
     for(let index = 0;index< num;index++)
       arr.push(<Text>{index + 1}</Text>)
     func(arr)
   }
+
   const test = () => {
     axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
       .then(res => {
@@ -31,8 +31,13 @@ const Schedule = () => {
   }
 
   const showSwitchWeeks = () => {
-    let ifShow = ifShowSetting == style.hideSettings ? style.showSettings : style.hideSettings
-    setIfShowSetting(ifShow)
+    settingPosition == -100 ? setSettingPosition(0) : setSettingPosition(-100);
+    Animated.timing(ifShowSetting, {
+      toValue: settingPosition,
+      duration:300,
+      useNativeDriver: true, 
+      easing: Easing.bezier(0.15, 0.73, 0.37, 1.2)
+    }).start();
   }
 
   useEffect(() => {
@@ -43,11 +48,11 @@ const Schedule = () => {
   return (
     <SafeAreaView style={style.scheduleContainer}>
       <ScrollView style={style.scrollContainer}>
-        <View style={ifShowSetting}><Setting /></View>
-        <View style={style.scheduleRowBox}>
+        <Animated.View style={{transform:[{translateY:ifShowSetting}]}}><Setting /></Animated.View>
+        <Animated.View style={[style.scheduleRowBox,{transform:[{translateY:ifShowSetting}]}]}>
           <View style={style.row} key={0}>
-            <TouchableOpacity onPress={showSwitchWeeks}>
-              <Image source={require('../../student/img/user.png')}></Image>
+            <TouchableOpacity onPress={showSwitchWeeks} style={style.setting}>
+              <Image source={require('../../student/img/setting.png')}/>
             </TouchableOpacity>
           </View>
           { rowList.map((item,index) => ( 
@@ -56,7 +61,7 @@ const Schedule = () => {
             </View>
           ))}
           <ShowCourse />
-        </View>
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -69,14 +74,6 @@ const style = StyleSheet.create({
   scrollContainer:{
     position:'relative',
     flex:1
-  },
-  hideSettings:{
-   transform:[{translateY:-100}],
-   height:0
-  },
-  showSettings:{
-    transform:[{translateY:0}],
-    height:100
   },
   row:{
     backgroundColor:'#fff',
@@ -91,7 +88,13 @@ const style = StyleSheet.create({
     width: 50,
     backgroundColor:'#dddddd',
     height:47
-  }
+  },
+  setting:{
+    justifyContent:'center',
+    alignItems:'center',
+    width: 50,
+    height:47
+  },
 });
 
 export default Schedule;
