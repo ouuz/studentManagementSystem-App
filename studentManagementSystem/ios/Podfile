@@ -10,6 +10,8 @@ target 'studentManagementSystem' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'studentManagementSystemTests' do
     inherit! :complete
     # Pods for testing

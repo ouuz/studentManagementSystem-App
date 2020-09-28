@@ -13,26 +13,28 @@ const GradeNavigator = createStackNavigator({
     screen: GradeList,
     navigationOptions({ navigation }) {
       return {
-        headerShown: false,
-        headerBackTitle: '返回'
+        headerShown: false
       }
     }
   }, 
   GradeDetails: {
     screen: GradeDetails,
+    navigationOptions({ navigation }) {
+      return {
+        headerTitle: '成绩查询'
+      }
+    }
   },
 }, {
   initialRouteName: 'GradeList',
   mode:'card',
-  
   defaultNavigationOptions: {
     ...TransitionPresets.SlideFromRightIOS,
     headerStyle: {
-      backgroundColor: 'green',
+      backgroundColor: '#fff',
       },
-      headerTintColor: '#fff',
       headerTitleStyle: {
-      fontWeight: 'bold',
+        fontSize:18
       },
   }
 });

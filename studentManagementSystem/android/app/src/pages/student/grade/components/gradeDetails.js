@@ -36,16 +36,7 @@ const style = StyleSheet.create({
   },
   gradeListContainer:{
     flex:1,
-    padding:10
-  },
-  gradeList:{
-    backgroundColor:'#fff',
-    borderBottomWidth:1,
-    borderBottomColor:'#ddd',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    minHeight:110,
-    padding:10,
+    padding:15,
     shadowColor: 'rgba(0, 0, 0, 0.03)',
     shadowOffset: {
         width: 0,
@@ -53,6 +44,16 @@ const style = StyleSheet.create({
     },
     shadowRadius: 2,
     elevation: 4,
+  },
+  gradeList:{
+    backgroundColor:'#fff',
+    borderBottomWidth:1,
+    borderBottomColor:'#ddd',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    minHeight:130,
+    marginBottom:5,
+    padding:15
   },
   gradeLeft:{
     justifyContent:'space-around'
