@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { StyleSheet, SafeAreaView, Text, Button, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, SafeAreaView, Text, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import mock from '../mock/mock'

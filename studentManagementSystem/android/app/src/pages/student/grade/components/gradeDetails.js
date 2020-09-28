@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'react-native-axios'
 
-import {SafeAreaView,StyleSheet, View, Text, ScrollView,TouchableOpacity,Animated,Easing} from "react-native";
+import {SafeAreaView,StyleSheet, View, Text, ScrollView} from "react-native";
 
 const GradeDetails = ({ navigation }) => {
 

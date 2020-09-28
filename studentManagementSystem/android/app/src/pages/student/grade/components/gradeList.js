@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { StyleSheet, SafeAreaView, Text, Button, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, SafeAreaView, Text, View, TouchableOpacity, Image } from 'react-native'
 
 import mock from '../mock/mock'
 import GradeCredits from './gradeCredits'

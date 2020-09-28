@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  ImageBackground,
-  Alert,
-  Image
-} from "react-native";
+import { StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image } from "react-native";
+import Optional from './components/optional'
 
 const Course = () => {
   return (
-    <View></View>  
+    <View style={{flex:1}}>
+      <Optional />
+    </View>  
   );
 };
 
