@@ -49,6 +49,7 @@ const OptionalList = () => {
                          } }>确定</Button>
                       </ListItem>
                     </List>
+                  <WhiteSpace size="lg" />
                 </Animatable.View>
               </Accordion.Panel>
             ))
