@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image } from "react-native";
-import Optional from './components/optional'
+import React from 'react';
+import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
+import { Tabs } from '@ant-design/react-native';
+import OptionalList from './components/optionalList'
+import HaveList from './components/haveList'
 
 const Course = () => {
+  const tabs = [
+    { title: '可选' },
+    { title: '已选' }
+  ];
   return (
-    <View style={{flex:1}}>
-      <Optional />
-    </View>  
+    <View style={{ flex: 1 }}>
+      <Tabs tabs={tabs}>
+        <OptionalList />
+        <HaveList />
+      </Tabs>
+    </View>
   );
-};
+}
 
-const style = StyleSheet.create({
-});
-
-export default Course;
+export default Course
