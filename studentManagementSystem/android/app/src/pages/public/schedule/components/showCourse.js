@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'react-native-axios'
 
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 
 import mock from'../mock/mock'
+
+const { width, height } = Dimensions.get('window');
 
 const ShowCourse = () => {
 
   const courseStyle = (index,section) => {
     let colors = ['#c3a6d7','#fe87b4','#16ad90','#539ce1'],
       color = colors[ Math.floor(Math.random() * colors.length) ],
-      top = index * 47,
-      height = section * 46
+      top = index * height / 14,
+      sectionHeight = section * height / 14.4
     return {
       justifyContent:'center',
       alignItems:'center',
       backgroundColor: color,
       position:'absolute',
-      height:height,
-      width:48,
+      height:sectionHeight,
+      width:width * 0.12,
       top:top,
       borderRadius:5,
       padding:1
@@ -50,17 +52,17 @@ const style = StyleSheet.create({
     position:'absolute'
   },
   col:{
-    width:50,
-    height:630
+    width:width * 0.125,
+    height:height
   },
   courseInformation:{
-    fontSize:11,
-    color:'#ffffff'
+    fontSize:8,
+    color:'#ffffff',
   },
   day:{
     justifyContent:'center',
     alignItems:'center',
-    height:47,
+    height:height / 14,
   },
 });
 

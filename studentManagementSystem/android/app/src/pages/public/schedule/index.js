@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'react-native-axios'
 
-import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated } from "react-native";
+import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated, Dimensions } from "react-native";
 
 import Setting from './components/setting'
 import ShowCourse from './components/showCourse'
 import {SafeAreaView} from 'react-navigation'
+
+const { width, height } = Dimensions.get('window');
 
 const Schedule = () => {
   const [row] = [12];
@@ -80,14 +82,14 @@ const style = StyleSheet.create({
     borderStyle: 'dotted',
     borderBottomWidth:1,
     borderColor:'#ddd',
-    height:47
+    height:height / 14
   },
   section:{
     justifyContent:'center',
     alignItems:'center',
-    width: 50,
+    width: width * 0.12,
     backgroundColor:'#dddddd',
-    height:47
+    height:height / 14
   },
   setting:{
     justifyContent:'center',

@@ -41,14 +41,7 @@ const selectedList = () => {
             <ListItem extra={course.serialNumber} multipleLine>课程编号</ListItem>
             <ListItem extra={course.credits} multipleLine>学分</ListItem>
             <ListItem extra={course.teacher} multipleLine>任课老师</ListItem>
-            <ListItem multipleLine style={style.booking}>是否需要订购教材：</ListItem>
-            {
-              data.map(item => (
-                <RadioItem key={item.value} disabled checked={course.booking == item.value} >
-                  {item.label}
-                </RadioItem>
-              )
-            )}
+            <ListItem extra={course.booking ? '是':'否'} multipleLine style={style.booking}>是否需要订购教材：</ListItem>
           </List>
         </Animatable.View>
         <WingBlank size="lg">       
