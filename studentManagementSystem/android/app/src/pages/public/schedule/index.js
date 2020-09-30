@@ -54,7 +54,7 @@ const Schedule = () => {
         <Animated.View style={[style.scheduleRowBox,{transform:[{translateY:ifShowSetting}]}]}>
           <View style={style.row} key={0}>
             <TouchableOpacity onPress={showSwitchWeeks} style={style.setting}>
-              <Image source={require('../../student/img/setting.png')}/>
+              <Image source={require('../../public/img/setting.png')}/>
             </TouchableOpacity>
           </View>
           { rowList.map((item,index) => ( 

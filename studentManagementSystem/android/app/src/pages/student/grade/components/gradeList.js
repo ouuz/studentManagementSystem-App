@@ -16,7 +16,7 @@ const GradeList = ({navigation}) => {
                   useCallback(() => {navigation.navigate('GradeDetails',{ gradeList:term.gradeList })}, []) 
                 }>
                 <Text>{term.term}</Text>
-                <Image source={require('../../img/arrow-right.png')}/>
+                <Image source={require('../../../public/img/arrow-right.png')}/>
               </TouchableOpacity>
               
           ))

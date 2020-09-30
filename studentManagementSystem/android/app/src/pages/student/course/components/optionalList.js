@@ -26,7 +26,7 @@ const OptionalList = () => {
         >
           {
             optionalList.map((course,index) => (
-              <Accordion.Panel header={course.name} style={style.course}>
+              <Accordion.Panel header={course.name} style={style.course} key={index}>
                 <Animatable.View 
                   duration={300}
                   easing="ease-out"

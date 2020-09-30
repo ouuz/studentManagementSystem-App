@@ -20,27 +20,30 @@ const ShowCourse = () => {
       backgroundColor: color,
       position:'absolute',
       height:sectionHeight,
-      width:width * 0.12,
+      width:width * 0.115,
       top:top,
       borderRadius:5,
       padding:1
     }
   }
 
+  const data = mock[0]["class"]
+
   return (
     <View style={style.scheduleColBox}>
         <View style={style.col} key={0}></View>
-        { mock[0]["class"].map((day,index) => (
-          <View style={style.col} key={index}>
-            <View style={style.day}>
-              <Text>{day.day}</Text>
+        { 
+          data.map((day,index) => (
+            <View style={style.col} key={index}>
+              <View style={style.day}>
+                <Text>{day.day}</Text>
+              </View>
+              {day.course.map(course => 
+                <View style={courseStyle(course.index,course.section)} key={course.index}>
+                  <Text style={style.courseInformation}>{course.name}</Text>
+                  <Text style={style.courseInformation}>{course.classroom}</Text>
+                </View>)}
             </View>
-            {day.course.map(course => 
-              <View style={courseStyle(course.index,course.section)} key={course.index}>
-                <Text style={style.courseInformation}>{course.name}</Text>
-                <Text style={style.courseInformation}>{course.classroom}</Text>
-              </View>)}
-          </View>
         ))}
       </View>
   );
@@ -56,7 +59,7 @@ const style = StyleSheet.create({
     height:height
   },
   courseInformation:{
-    fontSize:8,
+    fontSize:11,
     color:'#ffffff',
   },
   day:{
