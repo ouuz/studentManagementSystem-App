@@ -1,53 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import { createAppContainer} from 'react-navigation';
-import { createStackNavigator,TransitionPresets } from "react-navigation-stack";
-import { createBottomTabNavigator} from "react-navigation-tabs";
-import StackViewStyleInterpolator from "react-navigation-stack";
+import { View, Text, Image, ScrollView } from 'react-native';
 
-import GradeDetails from "./components/gradeDetails"
 import GradeList from "./components/gradeList"
+import GradeCredits from './components/gradeCredits';
+import { WhiteSpace } from '@ant-design/react-native';
 
-const GradeNavigator = createStackNavigator({
-  GradeList: {
-    screen: GradeList,
-    navigationOptions({ navigation }) {
-      return {
-        headerShown: false
-      }
-    }
-  }, 
-  GradeDetails: {
-    screen: GradeDetails,
-    navigationOptions({ navigation }) {
-      return {
-        headerTitle: '成绩查询'
-      }
-    }
-  },
-}, {
-  initialRouteName: 'GradeList',
-  mode:'card',
-  defaultNavigationOptions: {
-    ...TransitionPresets.SlideFromRightIOS,
-    headerStyle: {
-      backgroundColor: '#fff',
-      },
-      headerTitleStyle: {
-        fontSize:18
-      },
-  }
-});
-
-
-const AppContainer = createAppContainer(GradeNavigator)
-
-class App extends Component {
-  render() {
-    return ( <
-      AppContainer / >
-    )
-  }
+const Course = () => {
+  return (
+    <ScrollView style={{ flex: 1, padding:10, backgroundColor:'#f6f6f6' }}>
+      <GradeCredits />
+      <WhiteSpace size="lg"/>
+      <GradeList />
+    </ScrollView>
+  );
 }
 
-export default App;
+export default Course

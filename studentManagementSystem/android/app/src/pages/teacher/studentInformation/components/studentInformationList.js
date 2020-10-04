@@ -15,8 +15,8 @@ const StudentInformationList = ({navigation}) => {
         {
           data.map((student, index) => (
             <TouchableOpacity style={style.term} key={index}
-            key = {index}
-            onPress = {
+              key = {index}
+              onPress = {
               useCallback(() => {navigation.navigate('StudentInformationDetails',{ gradeList: student.gradeList})}, []) 
             }>
               <Card style={style.card}>
