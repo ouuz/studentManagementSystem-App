@@ -4,11 +4,11 @@ import LinearGradient from 'react-native-linear-gradient'
 
 import mock from '../mock/mock'
 
-const GradeCredits = () => {
-  const { averageGPA, totalCredit, haveCredit, repairingCredits, ranking } = mock[0]
+const GradeCredits = ({gradeCredits}) => {
+  const { averageGPA, totalCredit, haveCredit, repairingCredits, ranking } = gradeCredits
   const credits = [totalCredit, haveCredit, repairingCredits]
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView>
       <LinearGradient colors={['#ace0f9','#fff1eb',]} style={style.top}>
         <Text style={[style.averageGPA,style.whiteFont]}>{averageGPA}</Text>
         <Text style={style.grayFont}>平均绩点</Text>

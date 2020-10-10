@@ -6,7 +6,7 @@ import Login from './public/login/index'
 import Teacher from './teacher/index'
 class App extends Component {
   render() {
-    return ( <Student />
+    return ( <Teacher />
     )
   }
 }

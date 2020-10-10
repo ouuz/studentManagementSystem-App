@@ -17,7 +17,7 @@ const StudentInformationList = ({navigation}) => {
             <TouchableOpacity style={style.term} key={index}
               key = {index}
               onPress = {
-              useCallback(() => {navigation.navigate('StudentInformationDetails',{ gradeList: student.gradeList})}, []) 
+                useCallback(() => {navigation.navigate('StudentInformationDetails',{ stuID: student.studentID })}, []) 
             }>
               <Card style={style.card}>
                 <Card.Header

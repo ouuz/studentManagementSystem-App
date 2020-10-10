@@ -3,6 +3,7 @@ import axios from 'react-native-axios'
 
 import { SafeAreaView,StyleSheet, View, Text, ScrollView } from "react-native";
 import Grade from '../../../student/grade/index'
+import mock from '../mock/mock'
 
 const studentInformationDetails = ({ navigation }) => {
 
@@ -10,7 +11,7 @@ const studentInformationDetails = ({ navigation }) => {
 
   return (
     <SafeAreaView style={style.safeContainer}>
-      <Grade />
+      <Grade stu={ params.stuID }/>
     </SafeAreaView> 
   )
 }

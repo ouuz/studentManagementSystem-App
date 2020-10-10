@@ -6,18 +6,19 @@ import { List, Radio, Flex, WhiteSpace,Icon,Accordion,Button } from '@ant-design
 
 import mock from '../mock/mock'
 
-const GradeList = () => {
+const GradeList = ({gradeList}) => {
   const [activeSections,setActiveSections] = useState([])
   const [isActive,setIsActive] = useState(false)
+  const list = gradeList
 
   return (
     <SafeAreaView style={style.gradeListContainer}>
       <Accordion
-        onChange={(activeSections) => {setActiveSections(activeSections);activeSections.length ? setIsActive(true):setIsActive(false);}}
+        onChange={(activeSections) => {setActiveSections(activeSections);activeSections.length ? setIsActive(true):setIsActive(false);console.log(gradeList)}}
         activeSections={activeSections}
       >
         {
-          mock[0]["details"].map((term,index) => (
+          list.map((term,index) => (
             <Accordion.Panel header={term.term} style={style.term} key={index}>
                 <Animatable.View 
                   duration={300}
@@ -50,7 +51,9 @@ const GradeList = () => {
 
 const style = StyleSheet.create({
   gradeListContainer:{
+    padding: 3,
     backgroundColor:'#ffffff',
+    minHeight:370
   },
   term:{
     backgroundColor:'#ffffff',
@@ -73,17 +76,17 @@ const style = StyleSheet.create({
     borderRadius:10,
     flexDirection:'row',
     justifyContent:'space-between',
-    minHeight:130,
-    marginBottom:10,
-    marginHorizontal:5,
+     minHeight:130,
+    // marginBottom:10,
+    // marginHorizontal:5,
     backgroundColor:'#ffffff',
-    shadowColor: 'rgba(0, 0, 0, 0.03)',
-    shadowOffset: {
-        width: 0,
-        height: 2
-    },
-    shadowRadius: 2,
-    elevation: 4,
+    // shadowColor: 'rgba(0, 0, 0, 0.03)',
+    // shadowOffset: {
+    //     width: 0,
+    //     height: 2
+    // },
+    // shadowRadius: 2,
+    // elevation: 4,
     padding:15
   },
   gradeLeft:{
