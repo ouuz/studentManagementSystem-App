@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import axios from 'react-native-axios'
+
+import { DeviceEventEmitter } from 'react-native';
 
 import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated, Dimensions } from "react-native";
 
@@ -14,6 +16,8 @@ const Schedule = () => {
   const [rowList,setRowList] = useState([]);
   const [settingPosition,setSettingPosition] = useState(-100);
   const [ifShowSetting] = useState(new Animated.Value(settingPosition));
+  const [week,setWeek] = useState(1);
+  const [term,setTerm] = useState("2019-2020 第一学期");
 
   const createViews = (num,func) => {
     let arr = []
@@ -45,6 +49,8 @@ const Schedule = () => {
   useEffect(() => {
     // test()
     createViews(row,setRowList)
+    DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week)})
+    DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term)})
   },[]);
    
   return (
@@ -62,7 +68,7 @@ const Schedule = () => {
               <View style={style.section}>{item}</View>
             </View>
           ))}
-          <ShowCourse />
+          <ShowCourse week={week} term={term}/>
         </Animated.View>
       </ScrollView>
     </SafeAreaView>

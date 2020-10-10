@@ -14,7 +14,7 @@ const GradeList = ({gradeList}) => {
   return (
     <SafeAreaView style={style.gradeListContainer}>
       <Accordion
-        onChange={(activeSections) => {setActiveSections(activeSections);activeSections.length ? setIsActive(true):setIsActive(false);console.log(gradeList)}}
+        onChange={(activeSections) => {setActiveSections(activeSections);activeSections.length ? setIsActive(true):setIsActive(false);}}
         activeSections={activeSections}
       >
         {

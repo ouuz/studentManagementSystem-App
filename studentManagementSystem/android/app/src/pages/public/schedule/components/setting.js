@@ -1,32 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import axios from 'react-native-axios'
+import { DeviceEventEmitter } from 'react-native';
 
 import {StyleSheet, View, Text, ScrollView} from "react-native";
 
 import mock from'../mock/mock'
 
 const Settings = () => {
-  const [weeksList,setWeeksList] = useState([]);
+  const [selectedTerm,setSelectedTerm] = useState("2019-2020 第一学期");
+  const [weeksLabel,setWeeksLabel] = useState([]);
+  const [weeksNum,setWeeksNum] = useState(mock[0][selectedTerm]["weeks"]);
+  let termLabel = Object.keys(mock[0])
   
-  const createViews = (num,func) => {
+  const createWeeksLabelTemplate = (num) => {
     let arr = []
-    for(let index = 1;index<=num;index++)
+    for(let index = 1; index <= num; index++)
       arr.push(<Text style={style.information} onPress={switchWeeks}>{index}</Text>)
-    func(arr)
+    setWeeksLabel(arr)
   }
 
   const switchWeeks = (e) => {
     let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
-    console.log()
+    DeviceEventEmitter.emit('changeWeek',selectedWeek)
   }
 
   const switchTerms = (e) => {
-    let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
-    console.log()
+    setSelectedTerm(e.target._internalFiberInstanceHandleDEV.memoizedProps.children)
+    setWeeksNum(mock[0][selectedTerm]["weeks"])
+    createWeeksLabelTemplate(weeksNum)
+    DeviceEventEmitter.emit('changeTerm',selectedTerm)
   }
 
   useEffect(() => {
-    createViews(mock[0]["weeks"],setWeeksList)
+    createWeeksLabelTemplate(weeksNum)
   },[]);
    
   return (
@@ -36,15 +42,15 @@ const Settings = () => {
             <Text>更换学期</Text>
           </View>
           <ScrollView horizontal={true} style={style.termsScroll}>
-            { mock.map((term, index) => (<View style={style.terms} key={++index}><Text onPress={switchTerms} style={style.information}>{term.term}</Text></View>))}
+            { termLabel.map((term, index) => (<View style={style.terms} key={++index}><Text onPress={switchTerms} style={style.information}>{term}</Text></View>))}
           </ScrollView>
         </View>
-        <View style={style.weeksList} >
+        <View style={style.weeksLabel} >
           <View style={style.title} key={0}>
             <Text>更换周数</Text>
           </View>
           <ScrollView horizontal={true} style={style.weeksScroll}>
-            { weeksList.map((item, index) => ( <View style={style.weeks} key={index}>{item}</View> )) }
+            { weeksLabel.map((item, index) => ( <View style={style.weeks} key={index}>{item}</View> )) }
           </ScrollView>
         </View>
     </View>  
@@ -74,7 +80,7 @@ const style = StyleSheet.create({
     padding:5,
     marginLeft:10
   },
-  weeksList:{
+  weeksLabel:{
     flexDirection:'row',
     padding:5,
     borderBottomWidth:1,
