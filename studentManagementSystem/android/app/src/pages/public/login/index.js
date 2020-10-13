@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  ImageBackground,
-  Alert,
-  Image
-} from "react-native";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
 
-const Login = () => {
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState('');
+import ChangeUser from './components/changeUser'
+import Account from './components/account'
 
-  const submit = () => {
-    Alert.alert(`${account} ${password}`)
+const Login = (props) => {
+
+  const [settingPosition,setSettingPosition] = useState(-190);
+  const [ifShowSetting] = useState(new Animated.Value(settingPosition));
+
+  function switchUser () {
+    settingPosition == -190 ? setSettingPosition(0) : setSettingPosition(-190);
+    Animated.timing(ifShowSetting, {
+      toValue: settingPosition,
+      duration:300,
+      useNativeDriver: true, 
+      easing: Easing.bezier(0.15, 0.73, 0.37, 1.2)
+    }).start();
   }
+
+  function getUser(userID) {    
+    props.changeUser(userID)
+  }
+
+  useEffect(() => {
+    
+  },[])
 
   return (
     <ImageBackground source={require('./img/bg-login.jpg')} style={style.bg}>
-      <View style={style.container}>
-        <View style={style.box}>
-          <View style={style.account}>
-            <TextInput 
-              onChangeText={account => setAccount(account)}
-              placeholder = "请输入你的用户名"
-              value = {account}
-            /></View>
-          <View style={style.password}>
-            <TextInput 
-              onChangeText = {password =>setPassword(password)}
-              placeholder = "请输入你的密码"
-              value = {password}
-            /></View>
-          <View style={style.buttonBox}>  
-            <View style={style.button}>
-              <TouchableOpacity onPress={submit} >
-                <Image source={require('./img/登陆.png')}></Image>
-              </TouchableOpacity>
-          </View>
-        </View>
-        </View>
+      <View style={{flex:1}}>
+        <Animated.View style={[style.changeUserSetting,{transform:[{translateY:ifShowSetting}]}]}>
+          <ChangeUser getUser={ getUser }/>
+        </Animated.View>
+        <Animated.View style={[style.loginView,{transform:[{translateY:ifShowSetting}]}]}>
+          <TouchableOpacity onPress={switchUser}>
+            <Image source={require('./img/登陆.png')}></Image>
+          </TouchableOpacity>  
+          <Account />
+        </Animated.View>  
       </View>
     </ImageBackground>     
   );
@@ -51,41 +49,16 @@ const style = StyleSheet.create({
     flex:1,
     width:null,
     height:null,
-    //resizeMode:Image.resizeMode.contain,
     backgroundColor:'rgba(0,0,0,0)',
   },
-  container:{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems:'center',
+  changeUserSetting:{
+    flex:2,
+    backgroundColor:'#ffffff'
   },
-  box:{
-    width:'90%',
-    height:200,
-    justifyContent:'space-between',
+  loginView:{
+    flex:5,
+    justifyContent:'space-around',
   },
-  account:{
-    paddingLeft:20,
-    paddingRight:10,
-    borderRadius:50,
-    backgroundColor:'#ffffff',
-  },
-  password:{
-    paddingLeft:20,
-    paddingRight:10,
-    borderRadius:50,
-    backgroundColor:'#ffffff',
-  },
-  buttonBox:{
-    justifyContent:'center',
-    alignItems:'center',
-  },
-  button: { 
-    padding:15,
-    borderRadius:50,
-    alignItems:'center',
-    backgroundColor: '#61b0d4',
-  }
 });
 
 export default Login;

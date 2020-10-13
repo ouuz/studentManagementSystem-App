@@ -7,7 +7,6 @@ import { WhiteSpace } from '@ant-design/react-native';
 import mock from './mock/mock'
 
 const Grade = ({ stu }) => {
-  
   return (
     <ScrollView style={{ flex: 1, padding:10, backgroundColor:'#f6f6f6' }}>
       <GradeCredits gradeCredits={ mock[0][stu] }/>

@@ -12,6 +12,8 @@ target 'studentManagementSystem' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
   target 'studentManagementSystemTests' do
     inherit! :complete
     # Pods for testing
