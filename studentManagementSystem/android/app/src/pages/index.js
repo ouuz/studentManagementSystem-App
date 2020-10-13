@@ -10,6 +10,7 @@ const App = () => {
   
   function changeUser( userID ) {
     setUser(userID)
+    console.log(userID)
   }
 
   return (
@@ -19,7 +20,7 @@ const App = () => {
         case 0:
           return <Student/>
         case 1:
-          return <Student/>
+          return <Teacher/>
         default:
           return <Login changeUser={changeUser}/>
       }

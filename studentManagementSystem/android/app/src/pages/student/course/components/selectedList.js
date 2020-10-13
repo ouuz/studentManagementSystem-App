@@ -35,7 +35,7 @@ const selectedList = () => {
           easing="ease-out"
           style={style.course}
           animation={isChange? 'swing' : 'wobble'}>
-          <List  style={style.courseDetail}>
+          <List style={style.courseDetail}>
             <ListItem extra={course.name} multipleLine>课程名称</ListItem>
             <ListItem extra={course.category} multipleLine>课程类型</ListItem>
             <ListItem extra={course.serialNumber} multipleLine>课程编号</ListItem>
@@ -52,6 +52,7 @@ const selectedList = () => {
             locale={locale} 
             onChange = { (index) =>{ setIsChange(!isChange);setPageIndex(index); }}
           />
+          <WhiteSpace size="lg" />
         </WingBlank>
       </View>
     </SafeAreaView>  
@@ -89,8 +90,8 @@ const style = StyleSheet.create({
   courseDetail:{
     shadowColor: 'rgba(0, 0, 0, 0.03)',
     shadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     shadowRadius: 2,
     elevation: 4,
