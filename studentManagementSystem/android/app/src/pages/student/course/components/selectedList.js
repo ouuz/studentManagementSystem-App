@@ -19,7 +19,7 @@ const locale = {
 const selectedList = () => {
   const [isChange,setIsChange] = useState(false)
   const [selectedList] = useState(mock[0]["selectedList"])
-
+  const [count] = useState(mock[0]["selectedList"][0]["count"])
   const [pageIndex,setPageIndex] = useState(1)
   let course = selectedList[pageIndex]
 
@@ -27,7 +27,7 @@ const selectedList = () => {
     <SafeAreaView style={style.container}>
       <View style={style.courseContainer}>
         <LinearGradient colors={['#abecd6','#fbed96']} style={style.top}>
-          <Text style={style.count}>{selectedList.count}</Text>
+          <Text style={style.count}>{count}</Text>
           <Text style={style.illustrativeFont}>已选科目数</Text>
         </LinearGradient>
         <Animatable.View 
@@ -47,7 +47,7 @@ const selectedList = () => {
         <WingBlank size="lg">       
           <WhiteSpace size="lg" />
           <Pagination 
-            total={selectedList.count} 
+            total={count} 
             current={pageIndex} 
             locale={locale} 
             onChange = { (index) =>{ setIsChange(!isChange);setPageIndex(index); }}
@@ -90,8 +90,8 @@ const style = StyleSheet.create({
   courseDetail:{
     shadowColor: 'rgba(0, 0, 0, 0.03)',
     shadowOffset: {
-      width: 0,
-      height: 2
+        width: 0,
+        height: 2
     },
     shadowRadius: 2,
     elevation: 4,
