@@ -3,12 +3,8 @@ var Schema = mongoose.Schema;
 const selectedListMock = require('../data/student/selectedList')
 
 var selectedListSchema = new Schema({
-  name: String,
-  category: String,
-  serialNumber: String,
-  teacher: String,
-  credits: Number,
-  booking: Boolean,
+  studentId: String,
+  selectedList: Array,
   count: Number
 });
 

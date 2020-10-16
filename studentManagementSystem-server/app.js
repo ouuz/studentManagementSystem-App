@@ -9,6 +9,10 @@ require('./api/model/db');
 var studentSelectedListRouter = require('./api/routes/student/course/selectedList');
 var studentOptionalListRouter = require('./api/routes/student/course/optionalList');
 
+var ScheduleRouter = require('./api/routes/public/schedule/schedule');
+
+var teacherStudentInformationRouter = require('./api/routes/teacher/studentInformation/studentInformation');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/student', studentOptionalListRouter);
 app.use('/student', studentSelectedListRouter);
+app.use('/', ScheduleRouter);
+app.use('/teacher', teacherStudentInformationRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

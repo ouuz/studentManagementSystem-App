@@ -3,10 +3,8 @@ var Schema = mongoose.Schema;
 const optionalListMock = require('../data/student/optionalList')
 
 var optionalListSchema = new Schema({
-  name: String,
-  category: String,
-  teacher: String,
-  credits: Number
+  studentId: String,
+  optionalList: Array
 });
 
 const optionalList = mongoose.model('optionalList', optionalListSchema)

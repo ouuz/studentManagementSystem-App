@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var common = require('../../common');
-var OptionalList = mongoose.model('optionalList');
+var StudentInformationList = mongoose.model('studentInformationList');
 
-module.exports.getOptionalList = function (req, res) {
-  var studentId = req.query.studentId;
-
-  OptionalList.findOne({
-    "studentId": studentId
+module.exports.getStudentInformationList = function (req, res) {
+  var teacherId = req.query.teacherId;
+  
+  StudentInformationList.findOne({
+    "teacherId": teacherId
   }, function (err, data) {
     if (err) {
       common.sendJsonResponse(res, 500, err);
