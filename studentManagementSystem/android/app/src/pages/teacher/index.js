@@ -5,6 +5,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator} from "react-navigation-tabs";
 
 import User from "../public/user/index"
+import Login from '../public/login/index'
 import Schedule from "../public/schedule/index"
 import StudentInformation from './studentInformation/index'
 
@@ -15,7 +16,7 @@ const TeacherNavigator = createStackNavigator({
   StudentInformation: {
     screen: StudentInformation,
   },
-  User: {
+  Login: {
     screen: User,
   },
 }, {

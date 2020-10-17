@@ -6,12 +6,12 @@ var logger = require('morgan');
 
 require('./api/model/db');
 
-var studentSelectedListRouter = require('./api/routes/student/course/selectedList');
-var studentOptionalListRouter = require('./api/routes/student/course/optionalList');
+var studentSelectedListRouter = require('./api/routes/student/course');
+var studentOptionalListRouter = require('./api/routes/student/course');
 
-var ScheduleRouter = require('./api/routes/public/schedule/schedule');
+var ScheduleRouter = require('./api/routes/public/schedule');
 
-var teacherStudentInformationRouter = require('./api/routes/teacher/studentInformation/studentInformation');
+var teacherStudentInformationRouter = require('./api/routes/teacher/studentInformation');
 
 var app = express();
 

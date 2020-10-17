@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var common = require('../../common');
+var common = require('../common');
 var StudentInformationList = mongoose.model('studentInformationList');
 
 module.exports.getStudentInformationList = function (req, res) {
