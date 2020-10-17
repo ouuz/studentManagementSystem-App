@@ -1,45 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
+import { StyleSheet, ImageBackground, Dimensions, } from "react-native";
+import { Tabs, WingBlank, Flex,  } from '@ant-design/react-native';
 
-import ChangeUser from './components/changeUser'
 import Account from './components/account'
 
+const tabs = [
+  { title: '学生' },
+  { title: '老师' },
+];
+const { width, height } = Dimensions.get('window');
+
 const Login = (props) => {
+  const [identity,setIdentity] = useState('学生');
 
-  const [settingPosition,setSettingPosition] = useState(-190);
-  const [ifShowSetting] = useState(new Animated.Value(settingPosition));
-
-  function switchUser () {
-    settingPosition == -190 ? setSettingPosition(0) : setSettingPosition(-190);
-    Animated.timing(ifShowSetting, {
-      toValue: settingPosition,
-      duration:300,
-      useNativeDriver: true, 
-      easing: Easing.bezier(0.15, 0.73, 0.37, 1.2)
-    }).start();
+  function getIdentity(e) {    
+    setIdentity(e.title);
   }
-
-  function getUser(userID) {    
-    props.changeUser(userID)
-  }
-
-  useEffect(() => {
-    
-  },[])
 
   return (
     <ImageBackground source={require('./img/bg-login.jpg')} style={style.bg}>
-      <View style={{flex:1}}>
-        <Animated.View style={[style.changeUserSetting,{transform:[{translateY:ifShowSetting}]}]}>
-          <ChangeUser getUser={ getUser }/>
-        </Animated.View>
-        <Animated.View style={[style.loginView,{transform:[{translateY:ifShowSetting}]}]}>
-          <TouchableOpacity onPress={switchUser}>
-            <Image source={require('./img/登陆.png')}></Image>
-          </TouchableOpacity>  
-          <Account />
-        </Animated.View>  
-      </View>
+       <Flex justify="center">
+         <WingBlank style={style.box}>
+          <Tabs tabs={tabs} onChange={getIdentity}>
+            <Account 
+              changeIdentity={props.changeIdentity}
+              identity={identity}
+            />
+          </Tabs>
+        </WingBlank>
+       </Flex>
     </ImageBackground>     
   );
 };
@@ -50,15 +39,13 @@ const style = StyleSheet.create({
     width:null,
     height:null,
     backgroundColor:'rgba(0,0,0,0)',
+    justifyContent:'center',
+    alignItems:'center'
   },
-  changeUserSetting:{
-    flex:2,
-    backgroundColor:'#ffffff'
-  },
-  loginView:{
-    flex:5,
-    justifyContent:'space-around',
-  },
+  box:{
+    height:height * 0.46,
+    width:width * 0.88
+  }
 });
 
 export default Login;

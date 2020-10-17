@@ -5,6 +5,41 @@ import { Card, WingBlank,WhiteSpace  } from '@ant-design/react-native'
 
 import mock from '../mock/mock'
 
+// var RNFS = require('react-native-fs');
+
+// var path = RNFS.ExternalDirectoryPath + '/test.txt';
+
+// RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
+//   .then((success) => {
+//     console.log('FILE WRITTEN!'+path);
+//   })
+//   .catch((err) => {
+//     console.log(err.message);
+//   });
+
+// var RNFS = require('react-native-fs');
+ 
+// RNFS.readDir(RNFS.ExternalDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
+//   .then((result) => {
+//     console.log('GOT RESULT', result);
+ 
+//     return Promise.all([RNFS.stat(result[0].path), result[0].path]);
+//   })
+//   .then((statResult) => {
+//     if (statResult[0].isFile()) {
+//       return RNFS.readFile(statResult[1], 'utf8');
+//     }
+ 
+//     return 'no file';
+//   })
+//   .then((contents) => {
+//     console.log(contents);
+//   })
+//   .catch((err) => {
+//     console.log(err.message, err.code);
+//   });
+
+
 const StudentInformationList = ({navigation}) => {
 
   const data = mock

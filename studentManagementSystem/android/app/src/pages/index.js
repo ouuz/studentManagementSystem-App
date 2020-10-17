@@ -8,7 +8,7 @@ import Teacher from './teacher/index'
 const App = () => {
   const [user,setUser] = useState()
   
-  function changeUser( userID ) {
+  function changeIdentity( userID ) {
     setUser(userID)
     console.log(userID)
   }
@@ -17,12 +17,12 @@ const App = () => {
     <View style={{flex:1}}>
       {(()=>{
       switch(user){
-        case 0:
+        case "学生":
           return <Student/>
-        case 1:
+        case "老师":
           return <Teacher/>
         default:
-          return <Login changeUser={changeUser}/>
+          return <Login changeIdentity={changeIdentity}/>
       }
     })()}
     </View>

@@ -5,70 +5,73 @@ import { DeviceEventEmitter } from 'react-native';
 
 import { Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
 import {SafeAreaView} from 'react-navigation'
+import { WhiteSpace } from '@ant-design/react-native';
 
 const { width, height } = Dimensions.get('window');
 
-const Account = () => {
+const Account = (props) => {
   const [account, setAccount] = useState('');
   const [password, setPassword] = useState('');
   const submit = () => {
-    Alert.alert(`${account} ${password}`)
+    // Alert.alert(`${account} ${password}`)
+    props.changeIdentity(props.identity)
   }
-   
+
   return (
     <SafeAreaView style={style.box}>
-      <View style={style.account}>
+      <WhiteSpace />
+      <View style={style.inputBox}>
         <TextInput 
           onChangeText={account => setAccount(account)}
           placeholder = "请输入你的用户名"
           value = {account}
-        /></View>
-      <View style={style.password}>
+        />
+      </View>
+      <WhiteSpace />
+      <View style={style.inputBox}>
         <TextInput 
           onChangeText = {password =>setPassword(password)}
           placeholder = "请输入你的密码"
           value = {password}
-        /></View>
+        />
+      </View>
       <View style={style.buttonBox}>  
-        <View style={style.button}>
-          <TouchableOpacity onPress={submit} >
-            <Image source={require('../img/登陆.png')}></Image>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={submit} style={style.button}>
+          <Image source={require('../img/登陆.png')}></Image>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
 
+const common = {
+
+}
+
 const style = StyleSheet.create({
   box:{
-    height:300,
-    backgroundColor:'#4545',
+    height:height * 0.4, //200
+    backgroundColor:'#ffffff',
     justifyContent:'space-between',
-    padding:15
+    padding:width * 0.035, //15
   },
-  account:{
-    paddingLeft:20,
-    paddingRight:10,
-    borderRadius:50,
-    marginVertical:15,
-    backgroundColor:'#ffffff',
-  },
-  password:{
-    paddingLeft:20,
-    paddingRight:10,
-    borderRadius:50,
-    backgroundColor:'#ffffff',
+  inputBox: {
+    paddingLeft:width * 0.04, //20
+    paddingRight:width * 0.02, //10
+    borderRadius:width * 0.1, //50
+    borderWidth:1,
+    borderColor:'#ddd',
+    backgroundColor:'#f6f6f6',
   },
   buttonBox:{
     justifyContent:'center',
     alignItems:'center',
   },
   button: { 
-    padding:15,
-    borderRadius:50,
+    padding:width * 0.035, //15
+    borderRadius:width * 0.1, //50
     alignItems:'center',
-    backgroundColor: '#61b0d4',
+    backgroundColor: 'rgb(16, 142, 233)',
   }
 });
 
