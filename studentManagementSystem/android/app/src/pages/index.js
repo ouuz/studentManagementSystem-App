@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <View style={{flex:1}}>
-      {(()=>{
+      {/* {(()=>{
       switch(identity){
         case "学生":
           return <Student/>
@@ -23,7 +23,8 @@ const App = () => {
         default:
           return <Login changeIdentity={changeIdentity}/>
       }
-    })()}
+    })()} */}
+    <Teacher changeIdentity={changeIdentity}/>
     </View>
 
   )

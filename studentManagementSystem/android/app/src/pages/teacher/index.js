@@ -16,7 +16,7 @@ const TeacherNavigator = createStackNavigator({
   StudentInformation: {
     screen: StudentInformation,
   },
-  Login: {
+  User: {
     screen: User,
   },
 }, {
