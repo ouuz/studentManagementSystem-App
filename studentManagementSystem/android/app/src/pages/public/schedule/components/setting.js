@@ -2,107 +2,90 @@ import React, { useState, useEffect, } from 'react';
 import axios from 'react-native-axios'
 import { DeviceEventEmitter } from 'react-native';
 
-import {StyleSheet, View, Text, ScrollView} from "react-native";
-
+import {StyleSheet, View, Text, ScrollView, TouchableOpacity,Dimensions} from "react-native";
+import { Flex } from '@ant-design/react-native';
 import mock from'../mock/mock'
 
+const { width, height } = Dimensions.get('window');
+
 const Settings = () => {
-  const [selectedTerm,setSelectedTerm] = useState("2019-2020 第一学期");
-  const [weeksLabel,setWeeksLabel] = useState([]);
-  const [weeksNum,setWeeksNum] = useState(mock[0][selectedTerm]["weeks"]);
   let termLabel = Object.keys(mock[0])
   
-  const createWeeksLabelTemplate = (num) => {
-    let arr = []
-    for(let index = 1; index <= num; index++)
-      arr.push(<Text style={style.information} onPress={switchWeeks}>{index}</Text>)
-    setWeeksLabel(arr)
-  }
-
   const switchWeeks = (e) => {
     let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
     DeviceEventEmitter.emit('changeWeek',selectedWeek)
   }
 
   const switchTerms = (e) => {
-    setSelectedTerm(e.target._internalFiberInstanceHandleDEV.memoizedProps.children)
-    setWeeksNum(mock[0][selectedTerm]["weeks"])
-    createWeeksLabelTemplate(weeksNum)
+    let selectedTerm = e.target._internalFiberInstanceHandleDEV.memoizedProps.children
     DeviceEventEmitter.emit('changeTerm',selectedTerm)
+    DeviceEventEmitter.emit('changeWeek',1)
   }
 
-  useEffect(() => {
-    createWeeksLabelTemplate(weeksNum)
-  },[]);
-   
   return (
-    <View style={style.switchList}>
-        <View style={style.termsList}>
-          <View style={style.title} key={0}>
+    <Flex style={style.switchList} direction="column">
+        <Flex style={style.labelList} justify="center">
+          <View>
             <Text>更换学期</Text>
           </View>
           <ScrollView horizontal={true} style={style.termsScroll}>
-            { termLabel.map((term, index) => (<View style={style.terms} key={++index}><Text onPress={switchTerms} style={style.information}>{term}</Text></View>))}
+            { 
+              termLabel.map((term, index) => (
+                <TouchableOpacity style={[style.terms,style.label]} key={++index} onPress={switchTerms} >
+                  <Text style={style.information}>{term}</Text>
+                </TouchableOpacity>
+            ))}
           </ScrollView>
-        </View>
-        <View style={style.weeksLabel} >
-          <View style={style.title} key={0}>
+        </Flex>
+        <Flex style={style.labelList} >
+          <View>
             <Text>更换周数</Text>
           </View>
           <ScrollView horizontal={true} style={style.weeksScroll}>
-            { weeksLabel.map((item, index) => ( <View style={style.weeks} key={index}>{item}</View> )) }
+            {(() => {
+              let arr = []
+              for(let index = 1; index <= 20; index++)
+                arr.push(
+                  <TouchableOpacity style={[style.weeks,style.label]} key={index}>
+                    <Text style={style.information} onPress={switchWeeks}>{index}</Text>
+                  </TouchableOpacity>
+                )
+              return arr
+            })()}
           </ScrollView>
-        </View>
-    </View>  
+        </Flex>
+    </Flex>  
   );
 };
 
 const style = StyleSheet.create({
   switchList:{
-    minHeight:100,
-    justifyContent:'space-around',
     backgroundColor:'#ffffff',
-    flex:1
   },
-  termsList:{
-    flexDirection:'row',
-    padding:5,
+  labelList:{
+    height:height * 0.07,
+    paddingLeft:width * 0.02,
     borderBottomWidth:1,
     borderColor:'#dddddd',
-    justifyContent:'space-around',
+  },
+  label:{
+    backgroundColor:'#a9e8e4',
+    justifyContent:'center',
+    alignItems:'center',
+    height:height * 0.04,
+    marginLeft:width * 0.024
   },
   terms:{
-    height:30,
-    backgroundColor:'#a9e8e4',
-    borderRadius:10,
-    justifyContent:'center',
-    alignItems:'center',
-    padding:5,
-    marginLeft:10
-  },
-  weeksLabel:{
-    flexDirection:'row',
-    padding:5,
-    borderBottomWidth:1,
-    borderColor:'#dddddd',
-    justifyContent:'space-around',
+    borderRadius:width * 0.025,
+    padding:width * 0.02,
   },
   weeks:{
-    width:30,
-    height:30,
-    backgroundColor:'#a9e8e4',
+    width:width * 0.075,
     borderRadius:50,
-    justifyContent:'center',
-    alignItems:'center',
-    marginLeft:10
   },
   information:{
     color:'#ffffff'
   },
-  title:{
-    justifyContent:'center',
-    alignItems:'center'
-  }
 });
 
 export default Settings;

@@ -4,7 +4,7 @@ import axios from 'react-native-axios'
 import { DeviceEventEmitter } from 'react-native';
 
 import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated, Dimensions } from "react-native";
-
+import { Flex } from '@ant-design/react-native';
 import Setting from './components/setting'
 import ShowCourse from './components/showCourse'
 import {SafeAreaView} from 'react-navigation'
@@ -12,19 +12,11 @@ import {SafeAreaView} from 'react-navigation'
 const { width, height } = Dimensions.get('window');
 
 const Schedule = () => {
-  const [row] = [12];
-  const [rowList,setRowList] = useState([]);
+  const row = 12;
   const [settingPosition,setSettingPosition] = useState(-100);
   const [ifShowSetting] = useState(new Animated.Value(settingPosition));
   const [week,setWeek] = useState(1);
   const [term,setTerm] = useState("2019-2020 第一学期");
-
-  const createViews = (num,func) => {
-    let arr = []
-    for(let index = 0;index< num;index++)
-      arr.push(<Text>{index + 1}</Text>)
-    func(arr)
-  }
 
   const test = () => {
     axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
@@ -48,26 +40,32 @@ const Schedule = () => {
 
   useEffect(() => {
     // test()
-    createViews(row,setRowList)
-    DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week)})
-    DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term)})
+    setSettingPosition(0)
+    DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week);})
+    DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term);})
   },[]);
    
   return (
     <SafeAreaView style={style.scheduleContainer}>
       <ScrollView style={style.scrollContainer}>
-        <Animated.View style={{transform:[{translateY:ifShowSetting}]}}><Setting /></Animated.View>
-        <Animated.View style={[style.scheduleRowBox,{transform:[{translateY:ifShowSetting}]}]}>
-          <View style={style.row} key={0}>
-            <TouchableOpacity onPress={showSwitchWeeks} style={style.setting}>
-              <Image source={require('../../public/img/setting.png')}/>
-            </TouchableOpacity>
-          </View>
-          { rowList.map((item,index) => ( 
-            <View style={style.row} key={index}>
-              <View style={style.section}>{item}</View>
-            </View>
-          ))}
+        <Animated.View style={{transform:[{translateY:ifShowSetting}]}}>
+          <Setting />
+        </Animated.View>
+        <Animated.View style={{transform:[{translateY:ifShowSetting}]}}>
+          <TouchableOpacity onPress={showSwitchWeeks} style={style.setting}>
+            <Image source={require('../../public/img/setting.png')} />
+          </TouchableOpacity>
+          {(()=>{
+              let arr = []
+              for(let index = 0;index < row;index++)
+                arr.push(
+                  <View style={style.row} key={index}>
+                    <Flex justify="center" style={style.sectionLabel}>
+                      <Text>{index + 1}</Text>
+                    </Flex>
+                  </View>)
+              return arr
+          })()}
           <ShowCourse week={week} term={term}/>
         </Animated.View>
       </ScrollView>
@@ -75,6 +73,10 @@ const Schedule = () => {
   );
 };
 
+const common = {
+  rowHeight: height / 14,
+  rowWidth: width * 0.12
+}
 const style = StyleSheet.create({
   scheduleContainer:{
     flex:1
@@ -84,24 +86,23 @@ const style = StyleSheet.create({
     flex:1
   },
   row:{
-    backgroundColor:'#fff',
-    borderStyle: 'dotted',
+    backgroundColor:'#ffffff',
     borderBottomWidth:1,
-    borderColor:'#ddd',
-    height:height / 14
+    borderColor:'#dddddd',
+    height:common.rowHeight
   },
-  section:{
-    justifyContent:'center',
-    alignItems:'center',
-    width: width * 0.12,
-    backgroundColor:'#dddddd',
-    height:height / 14
+  sectionLabel:{
+    width:common.rowWidth,
+    height:common.rowHeight,
+    backgroundColor:'#eceaea',
   },
   setting:{
     justifyContent:'center',
     alignItems:'center',
-    width: 50,
-    height:47
+    width:common.rowWidth,
+    height:common.rowHeight,
+    backgroundColor:'#f6f6f6',
+    paddingTop:2
   },
 });
 

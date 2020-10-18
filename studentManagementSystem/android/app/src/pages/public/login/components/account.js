@@ -50,15 +50,15 @@ const common = {
 
 const style = StyleSheet.create({
   box:{
-    height:height * 0.4, //200
+    height:height * 0.4,
     backgroundColor:'#ffffff',
     justifyContent:'space-between',
-    padding:width * 0.035, //15
+    padding:width * 0.035,
   },
   inputBox: {
-    paddingLeft:width * 0.04, //20
-    paddingRight:width * 0.02, //10
-    borderRadius:width * 0.1, //50
+    paddingLeft:width * 0.04,
+    paddingRight:width * 0.02,
+    borderRadius:width * 0.1,
     borderWidth:1,
     borderColor:'#ddd',
     backgroundColor:'#f6f6f6',
@@ -68,8 +68,8 @@ const style = StyleSheet.create({
     alignItems:'center',
   },
   button: { 
-    padding:width * 0.035, //15
-    borderRadius:width * 0.1, //50
+    padding:width * 0.035,
+    borderRadius:width * 0.1,
     alignItems:'center',
     backgroundColor: 'rgb(16, 142, 233)',
   }

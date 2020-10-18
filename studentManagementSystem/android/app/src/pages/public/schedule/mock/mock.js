@@ -1,6 +1,5 @@
 const mock = [{
     "2019-2020 第一学期": {
-      "weeks": 20,
       "class": [{
           "day": "周一",
           "course": [{
@@ -129,7 +128,6 @@ const mock = [{
       ]
     },
     "2019-2020 第二学期": {
-      "weeks": 10,
       "class": [{
           "day": "周一",
           "course": [{
