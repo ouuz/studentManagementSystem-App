@@ -1,80 +1,80 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
+import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
 
-import { Card, WingBlank,WhiteSpace  } from '@ant-design/react-native'
+import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex  } from '@ant-design/react-native'
 
 import mock from '../mock/mock'
+import FileSystem from './fileSystem';
 
-// var RNFS = require('react-native-fs');
-
-// var path = RNFS.ExternalDirectoryPath + '/test.txt';
-
-// RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
-//   .then((success) => {
-//     console.log('FILE WRITTEN!'+path);
-//   })
-//   .catch((err) => {
-//     console.log(err.message);
-//   });
-
-// var RNFS = require('react-native-fs');
- 
-// RNFS.readDir(RNFS.ExternalDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
-//   .then((result) => {
-//     console.log('GOT RESULT', result);
- 
-//     return Promise.all([RNFS.stat(result[0].path), result[0].path]);
-//   })
-//   .then((statResult) => {
-//     if (statResult[0].isFile()) {
-//       return RNFS.readFile(statResult[1], 'utf8');
-//     }
- 
-//     return 'no file';
-//   })
-//   .then((contents) => {
-//     console.log(contents);
-//   })
-//   .catch((err) => {
-//     console.log(err.message, err.code);
-//   });
-
-
+const { width, height } = Dimensions.get('window');
 const StudentInformationList = ({navigation}) => {
-
+  const [information,setInformation] = useState(mock)
+  const [changeFlag,setChangeFlag] = useState(false)
   const data = mock
+  const right = [
+    {
+      text: '修改',
+      onPress: () => console.log('more'),
+      style: style.updateBtn,
+    },
+    {
+      text: '删除',
+      onPress: () => console.log('delete'),
+      style: style.deleteBtn,
+    },
+  ];
+
+  function getImportData(information) {
+    setChangeFlag(!changeFlag)
+    setInformation(information)
+  }
+
   return (
     <ScrollView style={style.container}>
+      <FileSystem 
+        studentNumber={data.length} 
+        information={data}
+        getImportData={getImportData}
+      />
       <WingBlank size="lg">
         <WhiteSpace size="lg" />
-        {
-          data.map((student, index) => (
-            <TouchableOpacity style={style.term} key={index}
-              key = {index}
-              onPress = {
-                useCallback(() => {navigation.navigate('StudentInformationDetails',{ stuID: student.studentID })}, []) 
-            }>
-              <Card style={style.card}>
-                <Card.Header
-                  thumbStyle={style.cardHeader}
-                  extra={student.name}
-                />
-                <Card.Body>
-                  <View style={style.contentContainer}>
-                    <Text style={style.content}>性别：{student.gender}</Text>
-                    <Text style={style.content}>学号：{student.studentID}</Text>
-                    <Text style={style.content}>学院：{student.college}</Text>
-                  </View>
-                </Card.Body>
-                <Card.Footer
-                  content="年级"
-                  extra={student.grade}
-                />
-              </Card>
-              <WhiteSpace size="lg" />
-          </TouchableOpacity>
-          ))
-        }
+        <WhiteSpace size="lg" />
+        <View style={style.listContainer}>
+          {
+            information.map((student, index) => (
+              <View>
+                <SwipeAction
+                  key={index}
+                  style={style.studentBox}
+                  autoClose
+                  right={right}
+                  left={[{
+                      text: '查看成绩',
+                      onPress: () => navigation.navigate('StudentInformationDetails',{ stuID: student.studentID }),
+                      style: style.readBtn,
+                    }]}
+                  >
+                  <WhiteSpace />
+                  <Flex justify="around">
+                    <Flex direction="column" justify="around" align="start" style={style.card}>
+                      <Text style={style.name}>{student.name}</Text>
+                      <Text style={style.college}>{student.college}</Text>
+                    </Flex>
+                    <Text style={style.studentID}>{student.studentID}</Text>
+                  </Flex>
+                  <WhiteSpace />
+                  <Flex style={style.tagBox} justify="around">
+                    <Text style={style.content}>{student.gender}</Text>
+                    <Text style={style.content}>{student.grade}</Text>
+                    <Text style={style.content}>{student.phone}</Text>
+                  </Flex>
+                  <WhiteSpace />
+                </SwipeAction>
+                <WhiteSpace size="lg"/>
+              </View>
+            ))
+          }
+        </View>
       </WingBlank>
     </ScrollView>
   );
@@ -83,26 +83,47 @@ const StudentInformationList = ({navigation}) => {
 const style = StyleSheet.create({
   container:{
     backgroundColor:'#f6f6f6',
+    flex:1
   },
-  card:{
-    shadowColor: 'rgba(0, 0, 0, 0.03)',
-    shadowOffset: {
-        width: 0,
-        height: 2
-    },
-    shadowRadius: 2,
-    elevation: 4,
+  studentBox:{
+    backgroundColor:'#ffffff',
+    borderLeftWidth:width * 0.01,
+    borderColor:'#1daa75'
   },
-  cardHeader:{
-    width: 30, 
-    height: 30 
+  readBtn:{
+    backgroundColor:'rgb(16, 142, 233)', 
+    color:'#ffffff'
   },
-  contentContainer:{
-    justifyContent:'space-around',
-    height:70
+  updateBtn:{
+    backgroundColor:'orange', 
+    color:'#ffffff' 
+  },
+  deleteBtn:{
+    backgroundColor:'red', 
+    color:'#ffffff' 
+  },
+  tagBox:{
+    width:width * 0.6
   },
   content:{
-    marginLeft: 16 
+    backgroundColor:'#ecedef',
+    borderRadius:width * 0.025,
+    padding:height * 0.01,
+  },
+  card:{
+    height:height * 0.1
+  },
+  name:{
+    fontSize:width * 0.05,
+    color:'#525252',
+  },
+  college:{
+    color:'#a2aeae',
+    fontSize:width * 0.032
+  },
+  studentID:{
+    color:'#1daa75',
+    fontSize:width * 0.04
   }
 });
 
