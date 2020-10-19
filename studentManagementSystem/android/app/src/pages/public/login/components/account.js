@@ -3,8 +3,8 @@ import axios from 'react-native-axios'
 
 import { DeviceEventEmitter } from 'react-native';
 
-import { Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
-import {SafeAreaView} from 'react-navigation'
+import { SafeAreaView,Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
+
 import { WhiteSpace } from '@ant-design/react-native';
 
 const { width, height } = Dimensions.get('window');

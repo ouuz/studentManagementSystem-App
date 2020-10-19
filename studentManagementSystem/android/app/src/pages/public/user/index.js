@@ -15,9 +15,9 @@ import mock from './mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
-const User = (props) => {
+const User = ({changeIdentity}) => {
   const {name, phone} = mock[0]
-console.log(props)
+
   function changePassword() {
     Modal.prompt(
       'Input New Password',
@@ -36,6 +36,10 @@ console.log(props)
       null,
       ['请输入新手机号']
     );
+  }
+
+  function exitBtn() {
+    changeIdentity('exit')
   }
 
   return (
@@ -67,7 +71,7 @@ console.log(props)
           </List.Item>
         </List>
         <WhiteSpace size="lg"/>
-        <Button type="primary" style={style.exitBtn}>退出登录</Button>
+        <Button type="primary" style={style.exitBtn} onPress={exitBtn}>退出登录</Button>
       </WingBlank>
       <Provider></Provider>
     </WingBlank>

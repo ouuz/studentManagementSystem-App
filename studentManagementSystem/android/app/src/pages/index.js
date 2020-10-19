@@ -14,17 +14,16 @@ const App = () => {
 
   return (
     <View style={{flex:1}}>
-      {/* {(()=>{
+      {(()=>{
       switch(identity){
         case "学生":
-          return <Student/>
+          return <Student changeIdentity={changeIdentity}/>
         case "老师":
-          return <Teacher/>
+          return <Teacher changeIdentity={changeIdentity}/>
         default:
           return <Login changeIdentity={changeIdentity}/>
       }
-    })()} */}
-    <Teacher changeIdentity={changeIdentity}/>
+    })()}
     </View>
 
   )

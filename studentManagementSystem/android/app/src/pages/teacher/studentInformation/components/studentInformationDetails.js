@@ -5,13 +5,13 @@ import { SafeAreaView,StyleSheet, View, Text, ScrollView } from "react-native";
 import Grade from '../../../student/grade/index'
 import mock from '../mock/mock'
 
-const studentInformationDetails = ({ navigation }) => {
+const studentInformationDetails = ({ route,navigation }) => {
 
-  const { params } = navigation.state;
+  const { stuID} = route.params;
 
   return (
     <SafeAreaView style={style.safeContainer}>
-      <Grade stu={ params.stuID }/>
+      <Grade stu={ stuID }/>
     </SafeAreaView> 
   )
 }
