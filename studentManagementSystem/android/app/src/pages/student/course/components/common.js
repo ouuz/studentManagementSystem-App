@@ -65,7 +65,7 @@ const common = (props) => {
           {
             list.map((course,index) => (
               <View key={index}>
-                <TouchableOpacity style={[style.label]} 
+                <TouchableOpacity style={style.label} 
                   onPress={() => {
                     let sections = activeSections;
                     sections[index] = !sections[index]
@@ -161,8 +161,7 @@ const style = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderLeftWidth:width * 0.015,
     borderColor:'#02a064',
-    borderTopRightRadius:width * 0.015,
-    borderBottomRightRadius:width * 0.015
+    borderTopRightRadius:width * 0.05,
   },
   labelBox:{
     flex:1,

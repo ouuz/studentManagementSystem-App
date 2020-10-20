@@ -6,7 +6,7 @@ import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, Toast,Provider  } fr
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');
 
-const FileSystem = ({studentNumber, information, getImportData}) => {
+const FileSystem = ({studentNumber, informationList, getImportData}) => {
 
   function importFile() {
     RNFS.readDir(RNFS.ExternalDirectoryPath)
@@ -20,7 +20,9 @@ const FileSystem = ({studentNumber, information, getImportData}) => {
       return 'no file';
     })
     .then((contents) => {
+      console.log(contents)
       getImportData(JSON.parse(contents));
+      
       Toast.success('文件导入成功！', 1);
     })
     .catch((err) => {
@@ -29,8 +31,8 @@ const FileSystem = ({studentNumber, information, getImportData}) => {
   } 
 
   function exportFile() {
-    var path = RNFS.ExternalDirectoryPath + '/information.json';
-    RNFS.writeFile(path, JSON.stringify(information), 'utf8')
+    var path = RNFS.ExternalDirectoryPath + '/informationList.json';
+    RNFS.writeFile(path, JSON.stringify(informationList), 'utf8')
     .then((success) => {
       console.log('FILE WRITTEN!'+ path);
       Toast.success('文件导出成功！', 1);

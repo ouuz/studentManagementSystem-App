@@ -21,6 +21,7 @@ export default function StudentInformation() {
           headerStyle: {
             backgroundColor: '#fff',
           },
+          headerTitle: "成绩查询",
           headerTitleStyle: {
             fontSize:18
           }

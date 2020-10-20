@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import User from "../public/user/index"
 import Schedule from "../public/schedule/index"
