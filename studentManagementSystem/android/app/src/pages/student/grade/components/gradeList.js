@@ -25,12 +25,12 @@ const GradeList = ({gradeList}) => {
                 style={style.gradeList}
                 >
                 {
-                  term.gradeList.map(course => (
-                    <Flex style={style.grade} justify="between">
+                  term.gradeList.map((course, index) => (
+                    <Flex style={style.grade} justify="between" key={index}>
                       <Flex style={style.gradeLeft} direction="column" justify="around" align="start">
                         <Text style={style.courseName}>{course.name}</Text>
                         <Text>编号：{course.serialNumber} 学分：{course.credits}</Text>
-                        {course.grade.map(item => (<Text>成绩：{item.level}({item.category})</Text>))}
+                        {course.grade.map((item, index) => (<Text key={index}>成绩：{item.level}({item.category})</Text>))}
                       </Flex>
                       <Flex justify="center">
                         <Text style={style.GPA}>{course.GPA}</Text>

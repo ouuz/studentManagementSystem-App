@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
 
-import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex  } from '@ant-design/react-native'
+import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, Toast,Provider  } from '@ant-design/react-native'
 
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');
@@ -21,6 +21,7 @@ const FileSystem = ({studentNumber, information, getImportData}) => {
     })
     .then((contents) => {
       getImportData(JSON.parse(contents));
+      Toast.success('文件导入成功！', 1);
     })
     .catch((err) => {
       console.log(err.message, err.code);
@@ -32,6 +33,7 @@ const FileSystem = ({studentNumber, information, getImportData}) => {
     RNFS.writeFile(path, JSON.stringify(information), 'utf8')
     .then((success) => {
       console.log('FILE WRITTEN!'+ path);
+      Toast.success('文件导出成功！', 1);
     })
     .catch((err) => {
       console.log(err.message);
@@ -39,24 +41,28 @@ const FileSystem = ({studentNumber, information, getImportData}) => {
   }
 
   return (
-    <Flex style={style.container} justify="center">
-      <Flex direction="column" justify="around" style={style.descBox}>
-        <Text style={[style.desc,style.descTopText]}>The number of students you have</Text>
-        <Text style={[style.desc,style.descMiddleText]}>
-          {studentNumber}
-          <Text style={style.descMiddleInnerText}>QTY</Text>
-        </Text>
-        <Text style={style.desc}>NJUPT Teacher @office</Text>
+    <View>
+      <Provider></Provider>
+      <Flex style={style.container} justify="center">
+        <Flex direction="column" justify="around" style={style.descBox}>
+          <Text style={[style.desc,style.descTopText]}>The number of students you have</Text>
+          <Text style={[style.desc,style.descMiddleText]}>
+            {studentNumber}
+            <Text style={style.descMiddleInnerText}>QTY</Text>
+          </Text>
+          <Text style={style.desc}>NJUPT Teacher @office</Text>
+        </Flex>
+        <View style={style.btnBox}>
+          <TouchableOpacity onPress={importFile} style={style.btn}>
+            <Text>文件导入</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={exportFile} style={style.btn}>
+            <Text>文件导出</Text>
+          </TouchableOpacity>
+        </View>
       </Flex>
-      <View style={style.btnBox}>
-        <TouchableOpacity onPress={importFile} style={style.btn}>
-          <Text>文件导入</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={exportFile} style={style.btn}>
-          <Text>文件导出</Text>
-        </TouchableOpacity>
-      </View>
-    </Flex>
+    </View>
+
   );
 };
 

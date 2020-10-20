@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
 
-import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex  } from '@ant-design/react-native'
+import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, } from '@ant-design/react-native'
 
 import mock from '../mock/mock'
 import FileSystem from './fileSystem';
@@ -74,6 +74,9 @@ const StudentInformationList = ({navigation}) => {
               </View>
             ))
           }
+        </View>
+        <View>
+          
         </View>
       </WingBlank>
     </ScrollView>
