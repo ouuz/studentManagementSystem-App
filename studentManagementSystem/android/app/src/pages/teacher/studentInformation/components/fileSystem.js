@@ -104,8 +104,10 @@ const style = StyleSheet.create({
   btn:{
     borderWidth:1,
     borderRadius:width * 0.1,
-    paddingHorizontal:width * 0.08,
-    paddingVertical:height * 0.01,
+    width:width * 0.3,
+    height: height * 0.05,
+    justifyContent:'center',
+    alignItems:'center',
     backgroundColor:'#ffffff',
     shadowColor: 'rgba(0, 0, 0, 0.03)',
     shadowOffset: {

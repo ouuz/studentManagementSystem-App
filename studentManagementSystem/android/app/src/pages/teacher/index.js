@@ -9,7 +9,7 @@ import StudentInformation from './studentInformation/index'
 
 const Tab = createBottomTabNavigator();
 
-export default function Teacher({changeIdentity, userId}) {
+export default function Teacher({changeIdentity, userId ,identity}) {
 
   function schedule() {
     return (
@@ -25,7 +25,7 @@ export default function Teacher({changeIdentity, userId}) {
 
   function user() {
     return (
-      <User changeIdentity={changeIdentity} userId={userId}/>
+      <User changeIdentity={changeIdentity} userId={userId} identity={identity}/>
     )
   }
 

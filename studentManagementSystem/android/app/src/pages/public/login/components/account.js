@@ -1,8 +1,6 @@
 import React, { useState, useEffect,  } from 'react';
 import axios from 'react-native-axios'
 
-import { DeviceEventEmitter } from 'react-native';
-
 import { SafeAreaView,Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
 
 import { WhiteSpace, List, InputItem,Toast,Provider } from '@ant-design/react-native';
@@ -11,11 +9,12 @@ import mock from '../mock/mock'
 const { width, height } = Dimensions.get('window');
 
 const Account = (props) => {
-  const [account, setAccount] = useState('T180304');
-  const [password, setPassword] = useState('8888');
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState('');
 
   const login = () => {
-    for(let user of mock){
+    let identity = props.identity === "老师" ? "teacher" : "student";
+    for(let user of mock[identity]){
       if(user.userName === account && user.password === password){
         props.changeIdentity(props.identity);
         props.getUserId(account)

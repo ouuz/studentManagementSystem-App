@@ -23,9 +23,9 @@ const App = () => {
       {(()=>{
       switch(identity){
         case "学生":
-          return <Student changeIdentity={changeIdentity} userId={userId}/>
+          return <Student changeIdentity={changeIdentity} userId={userId} identity={identity}/>
         case "老师":
-          return <Teacher changeIdentity={changeIdentity} userId={userId}/>
+          return <Teacher changeIdentity={changeIdentity} userId={userId} identity={identity}/>
         case "exit":
           return <Login changeIdentity={changeIdentity} getUserId={getUserId} />
       }

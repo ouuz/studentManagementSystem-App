@@ -12,8 +12,9 @@ import mock from '../login/mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
-const User = ({ changeIdentity, userId }) => {
-  const [informationList,setInformationList] = useState(mock)
+const User = ({ changeIdentity, userId, identity}) => {
+  const Identity = identity === "老师" ? "teacher" : "student"
+  const [informationList,setInformationList] = useState(mock[Identity])
   const student = informationList.findIndex(student => student.userName === userId) || 0
   
   const information = informationList[student]["information"]

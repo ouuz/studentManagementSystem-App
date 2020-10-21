@@ -1,7 +1,7 @@
 import React, { useState, useEffect,  } from 'react';
 import axios from 'react-native-axios'
 
-import { DeviceEventEmitter,SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import { Easing, StyleSheet, View, TouchableOpacity, Text, Image, ScrollView, Animated, Dimensions } from "react-native";
 import { Flex } from '@ant-design/react-native';
@@ -37,18 +37,28 @@ const Schedule = () => {
     }).start();
   }
 
+  function changeWeek(week) {
+    setWeek(week);
+  }
+
+  function changeTerm(term) {
+    setTerm(term);
+    setWeek(1);
+  }
+
   useEffect(() => {
     //  test()
     setSettingPosition(0)
-    DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week);})
-    DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term);})
   },[]);
    
   return (
     <SafeAreaView style={style.scheduleContainer}>
       <ScrollView style={style.scrollContainer}>
         <Animated.View style={{transform:[{translateY:ifShowSetting}]}}>
-          <Setting />
+          <Setting 
+            changeWeek={changeWeek}
+            changeTerm={changeTerm}
+          />
         </Animated.View>
         <Animated.View style={{transform:[{translateY:ifShowSetting}]}}>
           <TouchableOpacity onPress={showSwitchWeeks} style={style.setting}>

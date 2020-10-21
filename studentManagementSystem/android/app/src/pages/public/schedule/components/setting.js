@@ -1,6 +1,5 @@
 import React, { useState, useEffect, } from 'react';
 import axios from 'react-native-axios'
-import { DeviceEventEmitter } from 'react-native';
 
 import {StyleSheet, View, Text, ScrollView, TouchableOpacity,Dimensions} from "react-native";
 import { Flex } from '@ant-design/react-native';
@@ -8,20 +7,9 @@ import mock from'../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
-const Settings = () => {
+const Settings = ({changeWeek,changeTerm}) => {
   let termLabel = Object.keys(mock[0])
   
-  const switchWeeks = (e) => {
-    let selectedWeek = e.target._internalFiberInstanceHandleDEV.memoizedProps.children;
-    DeviceEventEmitter.emit('changeWeek',selectedWeek)
-  }
-
-  const switchTerms = (e) => {
-    let selectedTerm = e.target._internalFiberInstanceHandleDEV.memoizedProps.children
-    DeviceEventEmitter.emit('changeTerm',selectedTerm)
-    DeviceEventEmitter.emit('changeWeek',1)
-  }
-
   return (
     <Flex style={style.switchList} direction="column">
         <Flex style={style.labelList} justify="center">
@@ -31,7 +19,7 @@ const Settings = () => {
           <ScrollView horizontal={true} style={style.termsScroll}>
             { 
               termLabel.map((term, index) => (
-                <TouchableOpacity style={[style.terms,style.label]} key={++index} onPress={switchTerms} >
+                <TouchableOpacity style={[style.terms,style.label]} key={++index} onPress={() => {changeTerm(term)}} >
                   <Text style={style.information}>{term}</Text>
                 </TouchableOpacity>
             ))}
@@ -46,8 +34,8 @@ const Settings = () => {
               let arr = []
               for(let index = 1; index <= 10; index++)
                 arr.push(
-                  <TouchableOpacity style={[style.weeks,style.label]} key={index}>
-                    <Text style={style.information} onPress={switchWeeks}>{index}</Text>
+                  <TouchableOpacity style={[style.weeks,style.label]} key={index} onPress={() => {changeWeek(index)}}>
+                    <Text style={style.information} >{index}</Text>
                   </TouchableOpacity>
                 )
               return arr

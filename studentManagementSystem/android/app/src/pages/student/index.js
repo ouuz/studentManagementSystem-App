@@ -10,10 +10,10 @@ import Grade from "./grade/index"
 
 const Tab = createBottomTabNavigator();
 
-export default function student({changeIdentity,userId}) {
+export default function student({changeIdentity,userId, identity}) {
 
   function user() {
-    return (<User changeIdentity={changeIdentity} userId={userId}/>)
+    return (<User changeIdentity={changeIdentity} userId={userId} identity={identity}/>)
   }
 
   function schedule() {

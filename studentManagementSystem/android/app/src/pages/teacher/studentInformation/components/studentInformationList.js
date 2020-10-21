@@ -152,28 +152,28 @@ const StudentInformationList = ({navigation,userId}) => {
             }
           </View>
         </WingBlank>
+        {
+          visible?
+            <WingBlank style={style.addBox}>
+              <List renderHeader={'新增的学生信息'} >
+                <InputItem clear value={name} onChange={value => setName(value)} placeholder="学生姓名">名字</InputItem>
+                <InputItem clear value={gender} onChange={value => setGender(value)} placeholder="性别">性别</InputItem>
+                <InputItem clear value={grade} onChange={value => setGrade(value)} placeholder="年级">年级</InputItem>
+                <InputItem clear value={studentID} onChange={value => setStudentID(value)} placeholder="学号">学号</InputItem>
+                <InputItem clear value={college} onChange={value => setCollege(value)} placeholder="学院">学院</InputItem>
+                <InputItem clear value={phone} onChange={value => setPhone(value)} placeholder="手机号" type="phone">手机号</InputItem>
+                <List.Item>
+                  <Button type="primary" onPress={operator}>确定</Button> 
+                </List.Item>
+              </List>
+            </WingBlank> : null
+        }
       </ScrollView>
       <View style={style.addBtnBox}>
         <TouchableOpacity onPress={openInformationList}>
           <Image source={require('../img/add.png')}/>
         </TouchableOpacity>
       </View>
-      {
-        visible?
-       <WingBlank style={style.addBox}>
-          <List renderHeader={'新增的学生信息'} >
-            <InputItem clear value={name} onChange={value => setName(value)} placeholder="学生姓名">名字</InputItem>
-            <InputItem clear value={gender} onChange={value => setGender(value)} placeholder="性别">性别</InputItem>
-            <InputItem clear value={grade} onChange={value => setGrade(value)} placeholder="年级">年级</InputItem>
-            <InputItem clear value={studentID} onChange={value => setStudentID(value)} placeholder="学号">学号</InputItem>
-            <InputItem clear value={college} onChange={value => setCollege(value)} placeholder="学院">学院</InputItem>
-            <InputItem clear value={phone} onChange={value => setPhone(value)} placeholder="手机号" type="phone">手机号</InputItem>
-            <List.Item>
-              <Button type="primary" onPress={operator}>确定</Button> 
-            </List.Item>
-        </List>
-        </WingBlank> : null
-      }
     </View>
 
   );
