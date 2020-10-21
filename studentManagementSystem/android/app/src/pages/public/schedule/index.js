@@ -20,7 +20,7 @@ const Schedule = () => {
   const test = () => {
     axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
       .then(res => {
-        setCourseList(res.data)
+        console.log(res.data)
       })
       .catch((error) => {
         console.error(error);
@@ -38,7 +38,7 @@ const Schedule = () => {
   }
 
   useEffect(() => {
-    // test()
+     test()
     setSettingPosition(0)
     DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week);})
     DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term);})

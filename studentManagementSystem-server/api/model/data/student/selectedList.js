@@ -1,9 +1,4 @@
 const list = [{
-    "studentId": "B18030406",
-    "count": 4,
-    "selectedList": []
-  },
-  {
     "studentId": "B18030405",
     "count": 4,
     "selectedList": [{

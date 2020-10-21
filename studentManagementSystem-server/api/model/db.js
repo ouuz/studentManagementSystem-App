@@ -55,5 +55,7 @@ process.on('SIGTERM', function () {
 
 require('./student/selectedList');
 require('./student/optionalList');
+require('./student/grade');
+require('./public/information');
 require('./public/schedule');
 require('./teacher/studentInformation');

@@ -2,17 +2,16 @@ const list = [{
     "teacherId": "T180304",
     "studentInformationList": [{
         "name": "张三",
-        "list": ["sdasdas"],
         "gender": "女",
         "grade": "2018级",
-        "studentID": "B18030406",
+        "studentId": "B18030406",
         "college": "计软网安院"
       },
       {
         "name": "李四",
         "gender": "女",
         "grade": "2018级",
-        "studentID": "B18030407",
+        "studentId": "B18030407",
         "college": "计软网安院"
       }
     ]
@@ -23,14 +22,14 @@ const list = [{
         "name": "张三",
         "gender": "女",
         "grade": "2018级",
-        "studentID": "B18030406",
+        "studentId": "B18030406",
         "college": "计软网安院"
       },
       {
         "name": "李四",
         "gender": "女",
         "grade": "2018级",
-        "studentID": "B18030407",
+        "studentId": "B18030407",
         "college": "计软网安院"
       }
     ]

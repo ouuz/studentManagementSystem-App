@@ -9,7 +9,9 @@ require('./api/model/db');
 var studentSelectedListRouter = require('./api/routes/student/course');
 var studentOptionalListRouter = require('./api/routes/student/course');
 
+var GradeRouter = require('./api/routes/student/grade');
 var ScheduleRouter = require('./api/routes/public/schedule');
+var LoginRouter = require('./api/routes/public/user');
 
 var teacherStudentInformationRouter = require('./api/routes/teacher/studentInformation');
 
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/student', studentOptionalListRouter);
 app.use('/student', studentSelectedListRouter);
+app.use('/student', GradeRouter);
+app.use('/', LoginRouter);
 app.use('/', ScheduleRouter);
 app.use('/teacher', teacherStudentInformationRouter)
 
