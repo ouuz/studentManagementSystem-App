@@ -12,23 +12,23 @@ const { width, height } = Dimensions.get('window');
 
 const Schedule = () => {
   const row = 12;
-  const [settingPosition,setSettingPosition] = useState(-100);
+  const [settingPosition,setSettingPosition] = useState(-height * 0.14);
   const [ifShowSetting] = useState(new Animated.Value(settingPosition));
   const [week,setWeek] = useState(1);
   const [term,setTerm] = useState("2019-2020 第一学期");
 
-  const test = () => {
-    axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  // const test = () => {
+  //   axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
+  //     .then(res => {
+  //       console.log(res.data)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   const showSwitchWeeks = () => {
-    settingPosition == -100 ? setSettingPosition(0) : setSettingPosition(-100);
+    settingPosition == -height * 0.14 ? setSettingPosition(0) : setSettingPosition(-height * 0.14);
     Animated.timing(ifShowSetting, {
       toValue: settingPosition,
       duration:300,
@@ -38,7 +38,7 @@ const Schedule = () => {
   }
 
   useEffect(() => {
-     test()
+    //  test()
     setSettingPosition(0)
     DeviceEventEmitter.addListener('changeWeek',(week) => {setWeek(week);})
     DeviceEventEmitter.addListener('changeTerm',(term) => {setTerm(term);})

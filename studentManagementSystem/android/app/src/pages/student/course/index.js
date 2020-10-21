@@ -12,10 +12,10 @@ const tabs = [
   { title: '已选' }
 ];
 
-const Course = () => {
-
-  const [optionalList,setOptionalList] = useState(mock[0]["optionalList"]);
-  const [selectedList,setSelectedList] = useState(mock[0]["selectedList"]);
+const Course = ({ userId }) => {
+  const student = mock.findIndex(student => student.studentId === userId) || 0
+  const [optionalList,setOptionalList] = useState(mock[student]["optionalList"]);
+  const [selectedList,setSelectedList] = useState(mock[student]["selectedList"]);
   const [operator,setOperator] = useState(false)
 
   function addCourse(course) {
@@ -44,7 +44,6 @@ const Course = () => {
     setOperator(!operator)
   }
   
-
   return (
     <WingBlank style={{ flex: 1 }}>
       <WhiteSpace />

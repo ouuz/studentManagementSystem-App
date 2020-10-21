@@ -44,7 +44,7 @@ const Settings = () => {
           <ScrollView horizontal={true} style={style.weeksScroll}>
             {(() => {
               let arr = []
-              for(let index = 1; index <= 20; index++)
+              for(let index = 1; index <= 10; index++)
                 arr.push(
                   <TouchableOpacity style={[style.weeks,style.label]} key={index}>
                     <Text style={style.information} onPress={switchWeeks}>{index}</Text>

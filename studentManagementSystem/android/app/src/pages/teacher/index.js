@@ -9,11 +9,23 @@ import StudentInformation from './studentInformation/index'
 
 const Tab = createBottomTabNavigator();
 
-export default function Teacher({changeIdentity}) {
+export default function Teacher({changeIdentity, userId}) {
+
+  function schedule() {
+    return (
+      <Schedule />
+    )
+  }
+
+  function studentInformation() {
+    return (
+      <StudentInformation userId={userId}/>
+    )
+  }
 
   function user() {
     return (
-      <User changeIdentity={changeIdentity}/>
+      <User changeIdentity={changeIdentity} userId={userId}/>
     )
   }
 
@@ -45,8 +57,8 @@ export default function Teacher({changeIdentity}) {
           activeTintColor: '#61b0d4',
           inactiveTintColor: 'gray',
         }}>
-        <Tab.Screen name="课程表" component={Schedule} />
-        <Tab.Screen name="学生信息" component={StudentInformation} />
+        <Tab.Screen name="课程表" component={schedule} />
+        <Tab.Screen name="学生信息" component={studentInformation} />
         <Tab.Screen name="我" component={user} />
       </Tab.Navigator>
     </NavigationContainer>

@@ -87,7 +87,7 @@ const mock = [{
             "startWeek": 1,
             "endWeek": 8,
             "double": ''
-          }, , {
+          }, {
             "name": "毛泽东思想和中国特色社会主义理论指导",
             "index": 8,
             "classroom": "教3-410",
@@ -131,45 +131,61 @@ const mock = [{
       "class": [{
           "day": "周一",
           "course": [{
-            "name": "嵌入式手机终端开发技术",
-            "index": 1,
+            "name": "操作系统A",
+            "index": 3,
             "classroom": "教3-313",
-            "section": 3,
+            "section": 2,
             "startWeek": 1,
             "endWeek": 8,
-            "double": true
+            "double": false
+          }, {
+            "name": "毛泽东思想和中国特色社会主义理论指导",
+            "index": 6,
+            "classroom": "教3-313",
+            "section": 2,
+            "startWeek": 1,
+            "endWeek": 8,
+            "double": ''
           }]
         },
         {
           "day": "周二",
           "course": [{
-            "name": "数电",
+            "name": "汇编语言程序设计",
             "index": 1,
-            "classroom": "教3-313",
+            "classroom": "教3-512",
+            "section": 2,
+            "startWeek": 1,
+            "endWeek": 8,
+            "double": ''
+          }]
+        },
+        {
+          "day": "周三",
+          "course": [ {
+            "name": "单片机原理及系统设计",
+            "index": 3,
+            "classroom": "教3-403",
+            "section": 2,
+            "startWeek": 1,
+            "endWeek": 8,
+            "double": ''
+          }]
+        },
+        {
+          "day": "周四",
+          "course": [{
+            "name": "汇编语言程序设计",
+            "index": 1,
+            "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
             "endWeek": 8,
             "double": true
           }, {
-            "name": "模电",
-            "index": 3,
-            "classroom": "教3-313",
-            "section": 2,
-            "startWeek": 1,
-            "endWeek": 8,
-            "double": true
-          }]
-        },
-        {
-          "day": "周三",
-          "course": []
-        },
-        {
-          "day": "周四",
-          "course": [{
-            "name": "数电",
-            "index": 3,
-            "classroom": "教3-313",
+            "name": "毛泽东思想和中国特色社会主义理论指导",
+            "index": 8,
+            "classroom": "教3-410",
             "section": 2,
             "startWeek": 1,
             "endWeek": 8,
@@ -179,8 +195,8 @@ const mock = [{
         {
           "day": "周五",
           "course": [{
-            "name": "数电",
-            "index": 7,
+            "name": "Linux编程",
+            "index": 3,
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
@@ -191,13 +207,13 @@ const mock = [{
         {
           "day": "周六",
           "course": [{
-            "name": "数电",
-            "index": 3,
-            "classroom": "教3-313",
-            "section": 2,
+            "name": "嵌入式手机终端开发技术",
+            "index": 1,
+            "classroom": "教3-412",
+            "section": 3,
             "startWeek": 1,
             "endWeek": 8,
-            "double": true
+            "double": ''
           }]
         },
         {

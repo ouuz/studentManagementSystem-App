@@ -5,48 +5,61 @@ import { DeviceEventEmitter } from 'react-native';
 
 import { SafeAreaView,Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
 
-import { WhiteSpace } from '@ant-design/react-native';
+import { WhiteSpace, List, InputItem,Toast,Provider } from '@ant-design/react-native';
+import mock from '../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
 const Account = (props) => {
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState('');
-  const submit = () => {
-    // Alert.alert(`${account} ${password}`)
-    props.changeIdentity(props.identity)
+  const [account, setAccount] = useState('T180304');
+  const [password, setPassword] = useState('8888');
+
+  const login = () => {
+    for(let user of mock){
+      if(user.userName === account && user.password === password){
+        props.changeIdentity(props.identity);
+        props.getUserId(account)
+        return false;
+      }
+    }
+    Toast.fail("输入的用户名或者密码有误，请重新输入~");
   }
 
   return (
     <SafeAreaView style={style.box}>
+      <Provider></Provider>
       <WhiteSpace />
-      <View style={style.inputBox}>
-        <TextInput 
-          onChangeText={account => setAccount(account)}
-          placeholder = "请输入你的用户名"
-          value = {account}
-        />
-      </View>
+      <List >
+        <List.Item style={style.inputBox} multipleLine>
+          <InputItem
+            clear
+            value={account}
+            onChange={account => setAccount(account)}
+            placeholder={props.userPlaceholder}
+          />
+        </List.Item>
+          <WhiteSpace size="lg"/>
+          <WhiteSpace size="lg"/>
+        <List.Item style={style.inputBox} multipleLine>
+          <InputItem
+            clear
+            type="password"
+            value={password}
+            onChange={password =>setPassword(password)}
+            placeholder="密码默认为身份证后六位~"
+          />
+        </List.Item>
+        <WhiteSpace /> 
+      </List>
       <WhiteSpace />
-      <View style={style.inputBox}>
-        <TextInput 
-          onChangeText = {password =>setPassword(password)}
-          placeholder = "请输入你的密码"
-          value = {password}
-        />
-      </View>
       <View style={style.buttonBox}>  
-        <TouchableOpacity onPress={submit} style={style.button}>
+        <TouchableOpacity onPress={login} style={style.button}>
           <Image source={require('../img/登陆.png')}></Image>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
-
-const common = {
-
-}
 
 const style = StyleSheet.create({
   box:{

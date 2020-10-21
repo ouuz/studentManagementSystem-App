@@ -7,11 +7,11 @@ import mock from '../mock/mock'
 
 const studentInformationDetails = ({ route,navigation }) => {
 
-  const { stuID } = route.params;
+  const { userId } = route.params;
 
   return (
     <SafeAreaView style={style.safeContainer}>
-      <Grade stu={ stuID }/>
+      <Grade userId={ userId }/>
     </SafeAreaView> 
   )
 }

@@ -10,10 +10,22 @@ import Grade from "./grade/index"
 
 const Tab = createBottomTabNavigator();
 
-export default function student({changeIdentity}) {
+export default function student({changeIdentity,userId}) {
 
   function user() {
-    return (<User changeIdentity={changeIdentity}/>)
+    return (<User changeIdentity={changeIdentity} userId={userId}/>)
+  }
+
+  function schedule() {
+    return (<Schedule />)
+  }
+
+  function course() {
+    return (<Course userId={userId}/>)
+  }
+  
+  function grade() {
+    return (<Grade userId={userId}/>)
   }
 
   return (
@@ -48,9 +60,9 @@ export default function student({changeIdentity}) {
           activeTintColor: '#61b0d4',
           inactiveTintColor: 'gray',
         }}>
-        <Tab.Screen name="课程表" component={Schedule} />
-        <Tab.Screen name="选课" component={Course} />
-        <Tab.Screen name="成绩单" component={Grade} />
+        <Tab.Screen name="课程表" component={schedule} />
+        <Tab.Screen name="选课" component={course} />
+        <Tab.Screen name="成绩单" component={grade} />
         <Tab.Screen name="我" component={user} />
       </Tab.Navigator>
     </NavigationContainer>

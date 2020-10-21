@@ -2,27 +2,34 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  TextInput,
-  TouchableOpacity,
   ImageBackground,
-  Alert,
   Image,
   Text,
   Dimensions
 } from "react-native";
 import { Flex, WingBlank, List, Modal, Button, Provider, WhiteSpace} from '@ant-design/react-native';
-import mock from './mock/mock'
+import mock from '../login/mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
-const User = ({changeIdentity}) => {
-  const {name, phone} = mock[0]
+const User = ({ changeIdentity, userId }) => {
+  const [informationList,setInformationList] = useState(mock)
+  const student = informationList.findIndex(student => student.userName === userId) || 0
+  
+  const information = informationList[student]["information"]
+  const name = information["name"]
+  const [phone,setPhone] = useState(information["phone"])
 
   function changePassword() {
     Modal.prompt(
       'Input New Password',
       '密码最小长度是8个字符',
-      password => console.log(`password: ${password}`),
+      password => {
+        let newInformationList = informationList;
+        newInformationList[student]["password"] = password;
+        setInformationList(newInformationList);
+        changeIdentity("exit")
+      },
       'secure-text'
     );
   }
@@ -31,7 +38,12 @@ const User = ({changeIdentity}) => {
     Modal.prompt(
       'Input New Phone Number',
       '长度为11位阿拉伯数字',
-      phone => console.log(`phone: ${phone}`),
+      phone => {
+        setPhone(phone)
+        let newInformationList = informationList;
+        newInformationList[student]["information"]["phone"] = phone;
+        setInformationList(newInformationList);
+      },
       'default',
       null,
       ['请输入新手机号']
@@ -39,7 +51,7 @@ const User = ({changeIdentity}) => {
   }
 
   function exitBtn() {
-    changeIdentity('exit')
+    changeIdentity("exit")
   }
 
   return (

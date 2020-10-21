@@ -1,30 +1,53 @@
 const mock = [{
-  "optionalList": [{
+    "studentId": "B18030406",
+    "optionalList": [{
+        "name": "Java程序设计",
+        "category": "专业基础课限选",
+        "serialNumber": "B0302281C",
+        "teacher": "邓老师",
+        "credits": 3,
+        "allowance": 89
+      },
+      {
+        "name": "程序设计",
+        "category": "专业基础课限选",
+        "serialNumber": "B0302281C",
+        "teacher": "邓老师",
+        "credits": 3,
+        "allowance": 98
+      }
+    ],
+    "selectedList": [{
       "name": "Java程序设计",
       "category": "专业基础课限选",
       "serialNumber": "B0302281C",
       "teacher": "邓老师",
       "credits": 3,
-      "allowance":89
-    },
-    {
-      "name": "程序设计",
+      "allowance": 98,
+      "booking": true
+    }]
+  },
+  {
+    "studentId": "B18030407",
+    "optionalList": [{
+        "name": "Java程序设计",
+        "category": "专业基础课限选",
+        "serialNumber": "B0302281C",
+        "teacher": "邓老师",
+        "credits": 3,
+        "allowance": 89
+      },
+    ],
+    "selectedList": [{
+      "name": "Java程序设计",
       "category": "专业基础课限选",
       "serialNumber": "B0302281C",
       "teacher": "邓老师",
       "credits": 3,
-      "allowance":98
-    }
-  ],
-  "selectedList": [{
-    "name": "Java程序设计",
-    "category": "专业基础课限选",
-    "serialNumber": "B0302281C",
-    "teacher": "邓老师",
-    "credits": 3,
-    "allowance":98,
-    "booking": true
-  }]
-}]
+      "allowance": 98,
+      "booking": true
+    }]
+  }
+]
 
 export default mock

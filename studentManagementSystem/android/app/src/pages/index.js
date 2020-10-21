@@ -6,10 +6,16 @@ import Login from './public/login/index'
 import Teacher from './teacher/index'
 
 const App = () => {
-  const [identity,setIdentity] = useState()
+  const [identity,setIdentity] = useState("exit")
+  const [userId,setUserId] = useState()
+  const [information,setInformation] = useState()
   
   function changeIdentity( identity ) {
     setIdentity(identity)
+  }
+
+  function getUserId( userId ) {
+    setUserId(userId)
   }
 
   return (
@@ -17,11 +23,11 @@ const App = () => {
       {(()=>{
       switch(identity){
         case "学生":
-          return <Student changeIdentity={changeIdentity}/>
+          return <Student changeIdentity={changeIdentity} userId={userId}/>
         case "老师":
-          return <Teacher changeIdentity={changeIdentity}/>
-        default:
-          return <Login changeIdentity={changeIdentity}/>
+          return <Teacher changeIdentity={changeIdentity} userId={userId}/>
+        case "exit":
+          return <Login changeIdentity={changeIdentity} getUserId={getUserId} />
       }
     })()}
     </View>

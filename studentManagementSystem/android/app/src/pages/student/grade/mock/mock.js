@@ -1,5 +1,5 @@
 const mock = [{
-  'B18030406': {
+    "studentId": "B18030406",
     "averageGPA": "2.91",
     "totalCredit": 106,
     "haveCredit": 105,
@@ -110,7 +110,8 @@ const mock = [{
       },
     ]
   },
-  'B18030407': {
+  {
+    "studentId": "B18030407",
     "averageGPA": "1.91",
     "totalCredit": 106,
     "haveCredit": 105,
@@ -205,8 +206,8 @@ const mock = [{
           }]
         }]
       },
-    ]
-  },
-}]
+    ],
+  }
+]
 
 export default mock

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
 
-import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, Toast,Provider  } from '@ant-design/react-native'
+import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, Toast, Provider  } from '@ant-design/react-native'
 
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');

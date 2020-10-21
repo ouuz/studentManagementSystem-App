@@ -6,19 +6,14 @@ import GradeCredits from './components/gradeCredits';
 import { WhiteSpace } from '@ant-design/react-native';
 import mock from './mock/mock'
 
-const Grade = (props) => {
-  const [stu,setStu] = useState('B18030406')
+const Grade = ({ userId }) => {
+  const student = mock.findIndex(student => student.studentId === userId) || 0
 
-  useEffect(() => {
-    if(props.stu)
-      setStu(props.stu)
-  })
-  
   return (
     <ScrollView style={{ flex: 1, padding:10, backgroundColor:'#f6f6f6' }}>
-      <GradeCredits gradeCredits={ mock[0][stu] }/>
+      <GradeCredits gradeCredits={ mock[student] }/>
       <WhiteSpace size="lg"/>
-      <GradeList gradeList={ mock[0][stu]["details"] }/>
+      <GradeList gradeList={ mock[student]["details"] }/>
     </ScrollView>
   );
 }

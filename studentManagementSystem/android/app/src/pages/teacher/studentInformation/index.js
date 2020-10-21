@@ -6,12 +6,19 @@ import StudentInformationList from "./components/studentInformationList"
 
 const StudentInformationStack = createStackNavigator();
 
-export default function StudentInformation() {
+export default function StudentInformation({userId}) {
+
+  function studentInformationList({navigation}) {
+    return (
+      <StudentInformationList userId={userId} navigation={navigation}/>
+    )
+  }
+
   return (
     <StudentInformationStack.Navigator>
       <StudentInformationStack.Screen 
         name="StudentInformationList" 
-        component={StudentInformationList}
+        component={studentInformationList}
         options={{headerShown: false}}
       />
       <StudentInformationStack.Screen 

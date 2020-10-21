@@ -8,8 +8,9 @@ import FileSystem from './fileSystem';
 
 const { width, height } = Dimensions.get('window');
 
-const StudentInformationList = ({navigation}) => {
-  const [informationList,setInformationList] = useState(mock)
+const StudentInformationList = ({navigation,userId}) => {
+  const teacher = mock.findIndex(teacher => teacher.teacherId === userId) || 0
+  const [informationList,setInformationList] = useState(mock[teacher]["studentInformationList"])
   const [changeFlag,setChangeFlag] = useState(false)
   const [visible,setVisible] = useState(false)
   const [deleteFlag,setDeleteFlag] = useState(false)
@@ -68,7 +69,7 @@ const StudentInformationList = ({navigation}) => {
     let information = integration()
     let list = informationList;
     let index = list.findIndex(item => item.studentID === information.studentID)
-    index ? list.splice(index - 1,1,information) :list.splice(0,1,information)
+    list.splice(index,1,information)
     setInformationList(list)
     if(!!name && !!gender && !!grade && !!studentID &&!!college && !!phone)
       setVisible(false)
@@ -78,7 +79,7 @@ const StudentInformationList = ({navigation}) => {
   function deleteInformation(studentID) {
     let list = informationList;
     let index = list.findIndex(item => item.studentID === studentID)
-    index ? list.splice(index - 1,1) :list.splice(0,1)
+    list.splice(index,1)
     setInformationList(list)
     setDeleteFlag(!deleteFlag)
   }
@@ -107,6 +108,7 @@ const StudentInformationList = ({navigation}) => {
                         text: '修改',
                         onPress: () => {
                           setVisible(true);
+                          setBtnStatus('change')
                           setName(student.name);
                           setGender(student.gender)
                           setGrade(student.grade)
@@ -124,7 +126,7 @@ const StudentInformationList = ({navigation}) => {
                     ]}
                     left={[{
                         text: '查看成绩',
-                        onPress: () => navigation.navigate('StudentInformationDetails',{ stuID: student.studentID }),
+                        onPress: () => navigation.navigate('StudentInformationDetails',{ userId: student.studentID }),
                         style: style.readBtn,
                       }]}
                     >
@@ -167,7 +169,7 @@ const StudentInformationList = ({navigation}) => {
             <InputItem clear value={college} onChange={value => setCollege(value)} placeholder="学院">学院</InputItem>
             <InputItem clear value={phone} onChange={value => setPhone(value)} placeholder="手机号" type="phone">手机号</InputItem>
             <List.Item>
-              <Button type="primary" onPress={operator}>确定</Button>
+              <Button type="primary" onPress={operator}>确定</Button> 
             </List.Item>
         </List>
         </WingBlank> : null
