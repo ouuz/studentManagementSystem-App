@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'react-native-axios'
-
+import React from 'react';
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import { Flex } from '@ant-design/react-native';
-
 import mock from'../mock/mock'
 
 const { width, height } = Dimensions.get('window');

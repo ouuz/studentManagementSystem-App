@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
 
 import GradeList from "./components/gradeList"
 import GradeCredits from './components/gradeCredits';

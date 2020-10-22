@@ -1,9 +1,7 @@
-import React, { useState, Component, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, View, ScrollView, Dimensions,TextInput,SwipeAction, TouchableOpacity, ImageBackground, Alert, Image, Text} from "react-native";
-import { Pagination,  WingBlank, List, Radio, WhiteSpace,Steps,Button } from '@ant-design/react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, StyleSheet, View, ScrollView, Dimensions, TouchableOpacity, ImageBackground, Image, Text } from "react-native";
+import { WingBlank, Button, WhiteSpace,Steps } from '@ant-design/react-native';
 import * as Animatable from 'react-native-animatable';
-import LinearGradient from 'react-native-linear-gradient'
-import mock from '../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 const Step = Steps.Step;

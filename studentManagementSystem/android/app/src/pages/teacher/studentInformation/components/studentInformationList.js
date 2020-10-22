@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
-
-import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, InputItem,Button, Toast, Provider} from '@ant-design/react-native'
-
+import { StyleSheet, Dimensions, ScrollView, View, TouchableOpacity, Image, Text } from "react-native";
+import { WingBlank,WhiteSpace,List,SwipeAction, Flex, InputItem,Button, Toast} from '@ant-design/react-native'
 import mock from '../mock/mock'
 import FileSystem from './fileSystem';
 
@@ -230,7 +228,7 @@ const style = StyleSheet.create({
   },
   addBtnBox:{
     position:'absolute',
-    top:height * 0.75,
+    top:height * 0.78,
     right:width * 0.05,
     backgroundColor:'#1daa75',
     borderRadius:50,

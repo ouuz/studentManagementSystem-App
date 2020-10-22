@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import User from "../public/user/index"
 import Schedule from "../public/schedule/index"
 import StudentInformation from './studentInformation/index'
+import FileSystem from './fileSystem/index'
 
 const Tab = createBottomTabNavigator();
 
@@ -38,13 +39,18 @@ export default function Teacher({changeIdentity, userId ,identity}) {
 
           if (route.name === '课程表') {
             icon = focused
-              ? require('../public/img/schedule-selected.png')
+              ? require('../public/img/schedule-teacher.png')
               : require('../public/img/schedule.png');
           } else if (route.name === '学生信息') {
             icon = focused 
-              ? require('../public/img/grade-selected.png') 
-              : require('../public/img/grade.png')
-          } else if (route.name === '我') {
+              ? require('../public/img/studentInformation-selected.png') 
+              : require('../public/img/studentInformation.png')
+          } else if (route.name === '文件管理') {
+            icon = focused 
+            ? require('../public/img/file-selected.png')
+            : require('../public/img/file.png');
+          }
+          else if (route.name === '我') {
             icon = focused 
             ? require('../public/img/user-selected.png')
             : require('../public/img/user.png');
@@ -59,6 +65,7 @@ export default function Teacher({changeIdentity, userId ,identity}) {
         }}>
         <Tab.Screen name="课程表" component={schedule} />
         <Tab.Screen name="学生信息" component={studentInformation} />
+        <Tab.Screen name="文件管理" component={FileSystem} />
         <Tab.Screen name="我" component={user} />
       </Tab.Navigator>
     </NavigationContainer>

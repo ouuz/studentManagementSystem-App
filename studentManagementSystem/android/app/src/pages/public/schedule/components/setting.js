@@ -1,7 +1,5 @@
-import React, { useState, useEffect, } from 'react';
-import axios from 'react-native-axios'
-
-import {StyleSheet, View, Text, ScrollView, TouchableOpacity,Dimensions} from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity,Dimensions } from "react-native";
 import { Flex } from '@ant-design/react-native';
 import mock from'../mock/mock'
 

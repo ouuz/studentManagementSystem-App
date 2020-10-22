@@ -37,7 +37,7 @@ export default function student({changeIdentity,userId, identity}) {
 
           if (route.name === '课程表') {
             icon = focused
-              ? require('../public/img/schedule-selected.png')
+              ? require('../public/img/schedule-student.png')
               : require('../public/img/schedule.png');
           } else if (route.name === '选课') {
             icon = focused 

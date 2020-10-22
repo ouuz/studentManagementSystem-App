@@ -1,16 +1,13 @@
-import React, { useState, useEffect,  } from 'react';
-import axios from 'react-native-axios'
-
-import { SafeAreaView,Dimensions, StyleSheet, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Button, Text, ScrollView, Animated, Easing } from "react-native";
-
+import React, { useState } from 'react';
+import { SafeAreaView,Dimensions, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { WhiteSpace, List, InputItem,Toast,Provider } from '@ant-design/react-native';
 import mock from '../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
 const Account = (props) => {
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState('');
+  const [account, setAccount] = useState();
+  const [password, setPassword] = useState();
 
   const login = () => {
     let identity = props.identity === "老师" ? "teacher" : "student";

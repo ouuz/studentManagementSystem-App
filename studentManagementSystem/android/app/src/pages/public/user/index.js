@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Image,
-  Text,
-  Dimensions
-} from "react-native";
-import { Flex, WingBlank, List, Modal, Button, Provider, WhiteSpace} from '@ant-design/react-native';
+import { StyleSheet, View, ImageBackground, Image, Text, Dimensions } from "react-native";
+import { Flex, WingBlank, List, Modal, Button, Provider, WhiteSpace } from '@ant-design/react-native';
 import mock from '../login/mock/mock'
 
 const { width, height } = Dimensions.get('window');

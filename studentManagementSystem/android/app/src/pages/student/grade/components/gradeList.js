@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, SafeAreaView, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import * as Animatable from 'react-native-animatable';
-import { List, Radio, Flex, WhiteSpace,Icon,Accordion,Button,WingBlank } from '@ant-design/react-native';
+import { Flex, Accordion, WingBlank,Animated,Easing } from '@ant-design/react-native';
 
 const GradeList = ({gradeList}) => {
   const [activeSections,setActiveSections] = useState([])

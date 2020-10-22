@@ -1,8 +1,7 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { StyleSheet, SafeAreaView, Text, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { List, Radio, Flex, WhiteSpace,Icon,Accordion,Button,WingBlank } from '@ant-design/react-native';
-import mock from '../mock/mock'
+import { Flex } from '@ant-design/react-native';
 
 const GradeCredits = ({gradeCredits}) => {
   const { averageGPA, totalCredit, haveCredit, repairingCredits, ranking } = gradeCredits

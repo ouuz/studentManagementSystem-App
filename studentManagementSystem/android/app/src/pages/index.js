@@ -1,5 +1,5 @@
-import React, { Component,useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import Student from './student/index'
 import Login from './public/login/index'

@@ -25,7 +25,7 @@ const Course = ({ userId }) => {
 
     let currentOptionalList = optionalList;
     let index = currentOptionalList.findIndex(item => item.serialNumber === course.serialNumber)
-    index ? currentOptionalList.splice(index - 1,1) :currentOptionalList.splice(0,1)
+    currentOptionalList.splice(index,1)
     setOptionalList(currentOptionalList);
 
     setOperator(!operator)
@@ -34,7 +34,7 @@ const Course = ({ userId }) => {
   function deleteCourse(course) {
     let currentSelected = selectedList;
     let index = currentSelected.findIndex(item => item.serialNumber === course.serialNumber)
-    index ? currentSelected.splice(index - 1,1) :currentSelected.splice(0,1)
+    currentSelected.splice(index,1)
     setSelectedList(currentSelected);
 
     let currentOptionalList = optionalList;

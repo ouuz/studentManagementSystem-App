@@ -1,47 +1,27 @@
-import React, { useState, useCallback } from 'react';
-import { StyleSheet, Dimensions, ScrollView, View, TextInput, TouchableOpacity, ImageBackground, Alert, Image, Text } from "react-native";
-
-import { Card, WingBlank,WhiteSpace,List,SwipeAction, Flex, Toast, Provider  } from '@ant-design/react-native'
+import React from 'react';
+import { StyleSheet, Dimensions, View, TouchableOpacity, Text } from "react-native";
+import { Flex, Toast, Provider  } from '@ant-design/react-native'
 
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');
 
 const FileSystem = ({studentNumber, informationList, getImportData}) => {
 
-  function importFile() {
-    RNFS.readDir(RNFS.ExternalDirectoryPath)
-    .then((result) => {
-      return Promise.all([RNFS.stat(result[0].path), result[0].path]);
-    })
-    .then((statResult) => {
-      if (statResult[0].isFile()) {
-        return RNFS.readFile(statResult[1], 'utf8');
-      }
-      return 'no file';
-    })
-    .then((contents) => {
-      console.log(contents)
-      getImportData(JSON.parse(contents));
-      
-      Toast.success('文件导入成功！', 1);
-    })
-    .catch((err) => {
-      console.log(err.message, err.code);
-    });
-  } 
-
-  function exportFile() {
-    var path = RNFS.ExternalDirectoryPath + '/informationList.json';
-    RNFS.writeFile(path, JSON.stringify(informationList), 'utf8')
+  function exportFile(targetName,content) {
+    const path = `${RNFS.ExternalDirectoryPath}/${targetName}.json`;
+    RNFS.writeFile(path, JSON.stringify(content), 'utf8')
     .then((success) => {
       console.log('FILE WRITTEN!'+ path);
       Toast.success('文件导出成功！', 1);
     })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  }
-
+  };
+  
+  function importFile (fileName)  {
+    RNFS.readFile(`${RNFS.ExternalDirectoryPath}/${fileName}.json`)
+        .then(result => getImportData(JSON.parse(result)));
+    Toast.success('文件导入成功！', 1);
+  };
+  
   return (
     <View>
       <Provider></Provider>
@@ -55,10 +35,10 @@ const FileSystem = ({studentNumber, informationList, getImportData}) => {
           <Text style={style.desc}>NJUPT Teacher @office</Text>
         </Flex>
         <View style={style.btnBox}>
-          <TouchableOpacity onPress={importFile} style={style.btn}>
+          <TouchableOpacity onPress={() => {importFile("informationList")}} style={style.btn}>
             <Text>文件导入</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={exportFile} style={style.btn}>
+          <TouchableOpacity onPress={() => {exportFile("informationList",informationList)}} style={style.btn}>
             <Text>文件导出</Text>
           </TouchableOpacity>
         </View>

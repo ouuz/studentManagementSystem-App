@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ImageBackground, Dimensions,View,Text,TouchableOpacity,Animated,Easing } from "react-native";
+import { StyleSheet, ImageBackground, Dimensions, View, Animated, Easing } from "react-native";
 import { WingBlank, Flex, Button} from '@ant-design/react-native';
 
 import Account from './components/account'
