@@ -5,10 +5,20 @@ import mock from '../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 登录表单操作
+ * @param { String } props.identity 用户状态
+ * @param { Function } props.changeIdentity 更改用户状态
+ * @param { Function } props.getUserId 获取用户的身份标识：教师：工号 学生：学号
+ */
+
 const Account = (props) => {
   const [account, setAccount] = useState();
   const [password, setPassword] = useState();
 
+  /**
+   * @description 登录操作
+   */
   const login = () => {
     let identity = props.identity === "老师" ? "teacher" : "student";
     for(let user of mock[identity]){
@@ -42,7 +52,7 @@ const Account = (props) => {
             type="password"
             value={password}
             onChange={password =>setPassword(password)}
-            placeholder="密码默认为身份证后六位~"
+            placeholder="初始密码:888888"
           />
         </List.Item>
         <WhiteSpace /> 

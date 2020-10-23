@@ -3,6 +3,15 @@ import { StyleSheet, SafeAreaView, Text, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { Flex } from '@ant-design/react-native';
 
+/**
+ * @description 展示成绩单的绩点、各类学分以及排名
+ * @param { String } gradeCredits 用户的绩点和各类学分
+ * @param { String } gradeCredits.averageGPA 用户的平均绩点
+ * @param { Number } gradeCredits.totalCredit 用户的总学分
+ * @param { Number } gradeCredits.haveCredit 用户的已修学分
+ * @param { Number } gradeCredits.repairingCredits 用户的重修学分
+ * @param { String } gradeCredits.ranking 用户的当前排名
+ */
 const GradeCredits = ({gradeCredits}) => {
   const { averageGPA, totalCredit, haveCredit, repairingCredits, ranking } = gradeCredits
 

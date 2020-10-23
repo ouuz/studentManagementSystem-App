@@ -5,6 +5,12 @@ import mock from '../login/mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 展示用户信息
+ * @param { String } identity 用户身份
+ * @param { Function } changeIdentity 更改用户状态
+ * @param { String } userId 用户的身份标识：教师：工号 学生：学号
+ */
 const User = ({ changeIdentity, userId, identity}) => {
   const Identity = identity === "老师" ? "teacher" : "student"
   const [informationList,setInformationList] = useState(mock[Identity])
@@ -14,6 +20,9 @@ const User = ({ changeIdentity, userId, identity}) => {
   const name = information["name"]
   const [phone,setPhone] = useState(information["phone"])
 
+  /**
+   * @description 修改密码
+   */
   function changePassword() {
     Modal.prompt(
       'Input New Password',
@@ -27,6 +36,10 @@ const User = ({ changeIdentity, userId, identity}) => {
       'secure-text'
     );
   }
+
+  /**
+   * @description 修改手机号
+   */
 
   function changePhone() {
     Modal.prompt(

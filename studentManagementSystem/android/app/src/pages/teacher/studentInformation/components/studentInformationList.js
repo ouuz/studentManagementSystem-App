@@ -6,6 +6,11 @@ import FileSystem from './fileSystem';
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 学生信息列表
+ * @param { Array } navigation 导航
+ * @param { String } userId 用户的身份标识：教师：工号 学生：学号
+ */
 const StudentInformationList = ({navigation,userId}) => {
   const teacher = mock.findIndex(teacher => teacher.teacherId === userId) || 0
   const [informationList,setInformationList] = useState(mock[teacher]["studentInformationList"])
@@ -20,11 +25,18 @@ const StudentInformationList = ({navigation,userId}) => {
   const [college,setCollege] =useState('')
   const [phone,setPhone] = useState('')
   
+  /**
+   * @description 更改学生信息列表数据
+   * @param { Array } informationList 学生信息列表数据
+   */
   function getImportData(informationList) {
     setChangeFlag(!changeFlag)
     setInformationList(informationList)
   }
 
+  /**
+   * @description 打开新增学生信息的表单
+   */
   function openInformationList() {
     setName('');
     setGender('')
@@ -36,10 +48,16 @@ const StudentInformationList = ({navigation,userId}) => {
     setBtnStatus('add')
   }
 
+  /**
+   * @description 新增/修改学生信息的表单内的功能函数判断
+   */
   function operator() {
     btnStatus === "add" ?  addInformation() : updateInformation()
   }
 
+  /**
+   * @description 聚合信息
+   */
   function integration() {
     return {
       "name": name,
@@ -51,6 +69,9 @@ const StudentInformationList = ({navigation,userId}) => {
     }
   }
 
+  /**
+   * @description 新增学生信息
+   */
   function addInformation() {
     if(!!name && !!gender && !!grade && !!studentID &&!!college && !!phone){
       let information = integration()
@@ -63,6 +84,9 @@ const StudentInformationList = ({navigation,userId}) => {
     else Toast.fail('你还有信息没填写完成噢~');
   }
 
+  /**
+   * @description 更新学生信息
+   */
   function updateInformation() {
     let information = integration()
     let list = informationList;
@@ -74,6 +98,9 @@ const StudentInformationList = ({navigation,userId}) => {
     else Toast.fail('你还有信息没填写完成噢~');
   }
 
+  /**
+   * @description 删除学生信息
+   */
   function deleteInformation(studentID) {
     let list = informationList;
     let index = list.findIndex(item => item.studentID === studentID)

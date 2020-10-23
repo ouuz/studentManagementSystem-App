@@ -3,6 +3,10 @@ import { StyleSheet, Text } from 'react-native'
 import * as Animatable from 'react-native-animatable';
 import { Flex, Accordion, WingBlank,Animated,Easing } from '@ant-design/react-native';
 
+/**
+ * @description 展示各学期的成绩以及课程信息
+ * @param { Array } gradeList 用户的各学期的成绩以及课程信息数据
+ */
 const GradeList = ({gradeList}) => {
   const [activeSections,setActiveSections] = useState([])
   const [isActive,setIsActive] = useState(false)

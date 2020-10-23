@@ -8,7 +8,6 @@ import Teacher from './teacher/index'
 const App = () => {
   const [identity,setIdentity] = useState("exit")
   const [userId,setUserId] = useState()
-  const [information,setInformation] = useState()
   
   function changeIdentity( identity ) {
     setIdentity(identity)

@@ -12,12 +12,20 @@ const tabs = [
   { title: '已选' }
 ];
 
+/**
+ * @description 选课的公共容器
+ * @param { String } userId 用户的身份标识：教师：工号 学生：学号
+ */
 const Course = ({ userId }) => {
   const student = mock.findIndex(student => student.studentId === userId) || 0
   const [optionalList,setOptionalList] = useState(mock[student]["optionalList"]);
   const [selectedList,setSelectedList] = useState(mock[student]["selectedList"]);
   const [operator,setOperator] = useState(false)
 
+  /**
+   * @description 选课
+   * @param { Object } course 需要选择添加的课程
+   */
   function addCourse(course) {
     let currentSelected = selectedList;
     currentSelected.push(course)
@@ -31,6 +39,10 @@ const Course = ({ userId }) => {
     setOperator(!operator)
   }
 
+  /**
+   * @description 取消选课
+   * @param { Object } course 需要取消选择的课程
+   */
   function deleteCourse(course) {
     let currentSelected = selectedList;
     let index = currentSelected.findIndex(item => item.serialNumber === course.serialNumber)

@@ -6,11 +6,22 @@ import Account from './components/account'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 登录组件容器
+ * @param { String } props.identity 用户状态
+ * @param { Function } props.changeIdentity 更改用户状态
+ * @param { Function } props.getUserId 获取用户的身份标识：教师：工号 学生：学号
+ */
+
 const Login = (props) => {
   const [identity,setIdentity] = useState('学生');
   const [settingPosition,setSettingPosition] = useState(0);
   const [ifShowSetting] = useState(new Animated.Value(settingPosition));
 
+  /**
+   * @description 获取用户身份
+   * @param { String } newIdentity 用户当前选中的身份
+   */
   function getIdentity(newIdentity) {
     setIdentity(newIdentity);
     newIdentity == "学生" ? setSettingPosition(-width * 0.88) : setSettingPosition(0);

@@ -1,6 +1,11 @@
 import React from 'react';
 import Common from './common'
 
+/**
+ * @description 可选列表
+ * @param { Array } selectedList 已选列表的数据
+ * @param { Function } deleteCourse 取消选课的功能函数
+ */
 const selectedList = ({selectedList, deleteCourse}) => {
 
   return (

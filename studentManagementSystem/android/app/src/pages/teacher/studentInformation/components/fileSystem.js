@@ -5,8 +5,19 @@ import { Flex, Toast, Provider  } from '@ant-design/react-native'
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 学生信息的文件管理
+ * @param { Number } studentNumber 学生数量
+ * @param { Array } informationList 学生信息列表数据
+ * @param { Function } getImportData 更改学生信息列表数据
+ */
 const FileSystem = ({studentNumber, informationList, getImportData}) => {
 
+  /**
+   * @description 导出文件
+   * @param { String } targetName 需要导出的文件名
+   * @param { Array } content 需要导出的数据
+   */
   function exportFile(targetName,content) {
     const path = `${RNFS.ExternalDirectoryPath}/${targetName}.json`;
     RNFS.writeFile(path, JSON.stringify(content), 'utf8')
@@ -15,7 +26,11 @@ const FileSystem = ({studentNumber, informationList, getImportData}) => {
       Toast.success('文件导出成功！', 1);
     })
   };
-  
+
+  /**
+   * @description 导入文件
+   * @param { String } fileName 需要导入的文件名
+   */
   function importFile (fileName)  {
     RNFS.readFile(`${RNFS.ExternalDirectoryPath}/${fileName}.json`)
         .then(result => getImportData(JSON.parse(result)));

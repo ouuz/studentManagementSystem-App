@@ -6,6 +6,10 @@ import GradeCredits from './components/gradeCredits';
 import { WhiteSpace } from '@ant-design/react-native';
 import mock from './mock/mock'
 
+/**
+ * @description 成绩单的容器
+ * @param { String } userId 用户的身份标识：教师：工号 学生：学号
+ */
 const Grade = ({ userId }) => {
   const student = mock.findIndex(student => student.studentId === userId) || 0
 

@@ -5,6 +5,11 @@ import mock from'../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 课程表_设置
+ * @param { Function } changeWeek 更改当前选中星期
+ * @param { Function } changeTerm 更改当前选中学期
+ */
 const Settings = ({changeWeek,changeTerm}) => {
   let termLabel = Object.keys(mock[0])
   

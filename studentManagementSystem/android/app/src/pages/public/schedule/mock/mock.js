@@ -8,7 +8,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": false
           }, {
             "name": "毛泽东思想和中国特色社会主义理论指导",
@@ -16,7 +16,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }, {
             "name": "网络文学概论",
@@ -24,7 +24,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 3,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -36,7 +36,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
 
           }, {
@@ -45,7 +45,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -57,7 +57,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }, {
             "name": "单片机原理及系统设计",
@@ -65,7 +65,7 @@ const mock = [{
             "classroom": "教3-403",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -77,7 +77,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }, {
             "name": "计算机图形学（全英文）",
@@ -85,7 +85,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }, {
             "name": "毛泽东思想和中国特色社会主义理论指导",
@@ -93,7 +93,7 @@ const mock = [{
             "classroom": "教3-410",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }]
         },
@@ -105,7 +105,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }]
         },
@@ -117,7 +117,7 @@ const mock = [{
             "classroom": "教3-412",
             "section": 3,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -136,7 +136,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": false
           }, {
             "name": "毛泽东思想和中国特色社会主义理论指导",
@@ -144,7 +144,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -156,7 +156,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -168,7 +168,7 @@ const mock = [{
             "classroom": "教3-403",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },
@@ -180,7 +180,7 @@ const mock = [{
             "classroom": "教3-512",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }, {
             "name": "毛泽东思想和中国特色社会主义理论指导",
@@ -188,7 +188,7 @@ const mock = [{
             "classroom": "教3-410",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }]
         },
@@ -200,7 +200,7 @@ const mock = [{
             "classroom": "教3-313",
             "section": 2,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": true
           }]
         },
@@ -212,7 +212,7 @@ const mock = [{
             "classroom": "教3-412",
             "section": 3,
             "startWeek": 1,
-            "endWeek": 8,
+            "endWeek": 10,
             "double": ''
           }]
         },

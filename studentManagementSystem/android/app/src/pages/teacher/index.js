@@ -10,6 +10,12 @@ import FileSystem from './fileSystem/index'
 
 const Tab = createBottomTabNavigator();
 
+/**
+ * @description 教师系统的路由导航
+ * @param { Function } changeIdentity 更改用户的身份
+ * @param { String } userId 用户的身份标识：教师：工号 学生：学号
+ * @param { String } identity 用户的身份
+ */
 export default function Teacher({changeIdentity, userId ,identity}) {
 
   function schedule() {

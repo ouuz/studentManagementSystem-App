@@ -5,6 +5,11 @@ import mock from'../mock/mock'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 展示课程_布局
+ * @param { String } week 当前选中星期
+ * @param { String } term 当前选中学期
+ */
 const ShowCourse = ({week, term}) => {
 
   const courseStyle = (index,section) => {

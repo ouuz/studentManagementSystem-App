@@ -9,6 +9,11 @@ import grade from '../../student/grade/mock/mock'
 var RNFS = require('react-native-fs');
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 导出文件
+ * @param { String } targetName 需要导出的文件名
+ * @param { Array } content 需要导出的数据
+ */
 function exportFile(targetName,content) {
   const path = `${RNFS.ExternalDirectoryPath}/${targetName}.json`;
   RNFS.writeFile(path, JSON.stringify(content), 'utf8')
@@ -18,12 +23,21 @@ function exportFile(targetName,content) {
   })
 };
 
+/**
+ * @description 导入文件
+ * @param { String } fileName 需要导入的文件名
+ */
 function importFile (fileName)  {
   RNFS.readFile(`${RNFS.ExternalDirectoryPath}/${fileName}.json`)
       .then(result => console.log(result));
   Toast.success('文件导入成功！', 1);
 };
 
+/**
+ * @description 初始化需要导入的数据文件（即导出）
+ * @param { String } targetName 需要导出的文件名
+ * @param { Array } content 需要导出的数据
+ */
 function InitializeFile (targetName,content)  {
   const path = `${RNFS.ExternalDirectoryPath}/${targetName}.json`;
   RNFS.writeFile(path, JSON.stringify(content), 'utf8')
@@ -32,6 +46,9 @@ function InitializeFile (targetName,content)  {
   })
 };
 
+/**
+ * @description 文件管理的容器
+ */
 const FileSystem = () => {
   const [flag,setFlag] = useState(true)
 

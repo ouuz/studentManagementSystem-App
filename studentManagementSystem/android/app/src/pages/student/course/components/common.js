@@ -5,6 +5,10 @@ import * as Animatable from 'react-native-animatable';
 
 const { width, height } = Dimensions.get('window');
 const Step = Steps.Step;
+
+/**
+ * @description 课程信息的是否预订教材组件的标题公共渲染组件
+ */
 const page = {
   "optionalList":{
     "step":() => (<Step title={titleTemplate('是否需要订购教材')} />)
@@ -17,6 +21,11 @@ const page = {
       )}
   }
 }
+
+/**
+ * @description 课程信息的标题公共渲染组件
+ * @param { String } title 当前课程信息的标题
+ */
 function titleTemplate(title){
   return (
     <View style={{justifyContent:'center'}}>
@@ -25,6 +34,10 @@ function titleTemplate(title){
   )
 }
 
+/**
+ * @description 课程信息的描述公共渲染组件
+ * @param { String } title 当前课程信息的描述
+ */
 function descTemplate(desc){
   return (
     <View style={style.desc}>
@@ -33,6 +46,17 @@ function descTemplate(desc){
   )
 }
 
+/**
+ * @description 选课的公共渲染组件
+ * @param { String } props.desc 当前列表描述
+ * @param { Array } props.list 渲染的列表数据
+ * @param { Function } props.operator 用户可操作的功能函数
+ * @param { String } props.countDesc 列表数目的描述
+ * @param { Number } props.currentCount 课程的进程数
+ * @param { Function } props.titleBg 列表数目的描述背景图
+ * @param { Function } props.radio 是否预订教材的函数式组件（单选）的渲染
+ * @param { Boolean } props.booking 是否预订教材的状态
+ */
 const common = (props) => {
   
   const [isActive,setIsActive] = useState(false)

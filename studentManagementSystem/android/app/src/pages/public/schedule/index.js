@@ -1,5 +1,4 @@
 import React, { useState, useEffect,  } from 'react';
-import axios from 'react-native-axios'
 
 import { SafeAreaView } from 'react-native';
 
@@ -10,22 +9,15 @@ import ShowCourse from './components/showCourse'
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @description 课程表的公共容器
+ */
 const Schedule = () => {
   const row = 12;
   const [settingPosition,setSettingPosition] = useState(-height * 0.14);
   const [ifShowSetting] = useState(new Animated.Value(settingPosition));
   const [week,setWeek] = useState(1);
   const [term,setTerm] = useState("2019-2020 第一学期");
-
-  // const test = () => {
-  //   axios.get('https://mock.yonyoucloud.com/mock/15650/student/getSchedule')
-  //     .then(res => {
-  //       console.log(res.data)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
 
   const showSwitchWeeks = () => {
     settingPosition == -height * 0.14 ? setSettingPosition(0) : setSettingPosition(-height * 0.14);
@@ -47,7 +39,6 @@ const Schedule = () => {
   }
 
   useEffect(() => {
-    //  test()
     setSettingPosition(0)
   },[]);
    
